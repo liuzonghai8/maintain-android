@@ -3,8 +3,8 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_in_or_register">Sign in or register</string>
+    <string name="action_sign_in">Sign in</string>
     <string name="welcome">"Welcome!"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
@@ -15,7 +15,15 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_tools">tools</string>
     <string name="title_learn">learn</string>
+    <string name="title_code">ErrorCode</string>
     <string name="title_me">me</string>
     <string name="tab_name_1">code</string>
     <string name="tab_name_2">sensor</string>
+    <string name="splash">Seize the day, live long</string>
+    <string name="version">" 0.5 version"</string>
+    <string name="action_register">register</string>
+    <string name="title_remember_me">remember_me</string>
+    <string name="title_activity_main">MainActivity</string>
+
+
 </resources>
