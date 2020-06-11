@@ -23,4 +23,5 @@
     <string name="version">0.5版本</string>
     <string name="action_register">注册</string>
     <string name="title_remember_me">记住我</string>
+    <string name="edite_hint_input">请输入电话号码</string>
 </resources>

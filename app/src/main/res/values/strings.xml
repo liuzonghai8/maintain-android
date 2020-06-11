@@ -24,6 +24,7 @@
     <string name="action_register">register</string>
     <string name="title_remember_me">remember_me</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="edite_hint_input">please input phone number</string>
 
 
 </resources>
