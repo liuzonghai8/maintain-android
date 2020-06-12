@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-public class PhoneCheckUtils {
+public class PhoneUtils {
 
     /**
      * 大陆手机号码11位数，匹配格式：前三位固定格式+后8位任意数
@@ -17,7 +17,7 @@ public class PhoneCheckUtils {
      * 18+任意数
      * 198,199
      */
-    public static boolean isChinaPhoneLegal(String str) throws PatternSyntaxException {
+    public static boolean checkChinaPhone(String str) throws PatternSyntaxException {
         // ^ 匹配输入字符串开始的位置
         // \d 匹配一个或多个数字，其中 \ 要转义，所以是 \\d
         // $ 匹配输入字符串结尾的位置
