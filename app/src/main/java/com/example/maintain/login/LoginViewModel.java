@@ -30,8 +30,10 @@ public class LoginViewModel extends AndroidViewModel {
     public final String device = MobileInfoUtil.getIMEI(getApplication());
     private Context content = getApplication();
 
+
     public LoginViewModel(@NonNull Application application) {
         super(application);
+        Log.d("TAG_LOG", "-----LoginViewModel.创建-----" );
     }
     //检查账号是否合法
     public boolean checkPhone() {
@@ -51,7 +53,7 @@ public class LoginViewModel extends AndroidViewModel {
         if (flag.getValue()) {
             sd.save(fileName, keyName, userKey.getValue());
             flag.setValue(false);
-            userKey.setValue("已经存储key");
+            userKey.setValue("已经存储有key，返回登录界面登录");
         } else {
             sd.save(fileName, keyName, "");
             userKey.setValue("");
