@@ -14,14 +14,14 @@
         <activity
             android:name=".login.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustResize" ></activity>
+            android:windowSoftInputMode="adjustNothing" ></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" />
         <activity
             android:name=".login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
