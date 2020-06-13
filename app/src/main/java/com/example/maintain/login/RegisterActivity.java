@@ -38,10 +38,9 @@ public class RegisterActivity extends AppCompatActivity {
                 Log.d("TAG_LOG","---flag-observe--"+flag);
                 if(flag){
                     binding.butSave.setText("保存Key");
-                    //binding.eidtKey.setVisibility();
+//                   binding.eidtKey.setEdi
                 }else {
                     binding.butSave.setText("清除Key");
-
                 }
             }
         });

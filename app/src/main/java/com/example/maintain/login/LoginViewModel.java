@@ -51,8 +51,10 @@ public class LoginViewModel extends AndroidViewModel {
         if (flag.getValue()) {
             sd.save(fileName, keyName, userKey.getValue());
             flag.setValue(false);
+            userKey.setValue("已经存储key");
         } else {
             sd.save(fileName, keyName, "");
+            userKey.setValue("");
             flag.setValue(true);
         }
     }
