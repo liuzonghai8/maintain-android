@@ -30,7 +30,7 @@ private static final String MD5="MD5";
         sb.append(md5).append(sha).append(phone);
         //sha512
         String key= getSHA(sb.toString(),SHA512);
-        Log.d("TAG_LOG","----md5-getSHA-512--key---"+key);
+       // Log.d("TAG_LOG","----md5-getSHA-512--key---"+key);
 
         return key;
     }

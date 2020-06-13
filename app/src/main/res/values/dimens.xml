@@ -8,6 +8,6 @@
     <dimen name="high_size">60dp</dimen>
     <dimen name="big_size">48sp</dimen>
     <dimen name="mid_size">36sp</dimen>
-    <dimen name="default_size">24sp</dimen>
+    <dimen name="default_size">20sp</dimen>
     <dimen name="small_size">14sp</dimen>
 </resources>
