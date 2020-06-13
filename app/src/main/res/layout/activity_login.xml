@@ -33,6 +33,7 @@
             android:id="@+id/edite_username"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:autofillHints=""
             android:drawableStart="@drawable/ic_person_50"
             android:drawableLeft="@drawable/ic_baseline_person_24"
@@ -42,54 +43,66 @@
             android:shadowColor="#FFFFFF"
             android:text="@={data.username}"
             android:textSize="@dimen/default_size"
-            app:layout_constraintBottom_toTopOf="@+id/bt_register"
+            app:layout_constraintBottom_toTopOf="@+id/radioButton"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.342" />
+            app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
         <RadioButton
             android:id="@+id/radioButton"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginBottom="20dp"
             android:text="@string/title_remember_me"
             app:layout_constraintBottom_toTopOf="@+id/bt_submit"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/edite_username"
-            app:layout_constraintVertical_bias="0.26999998" />
+            app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
         <Button
             android:id="@+id/bt_submit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
             android:background="@color/colorPrimary"
             android:enabled="@{data.valid}"
             android:text="@string/action_sign_in"
             android:textSize="@dimen/default_size"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guideline3"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/bt_register"
-            app:layout_constraintVertical_bias="0.100000024" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
         <Button
             android:id="@+id/bt_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/action_register"
-            android:textSize="@dimen/default_size"
-            android:textColor="@color/colorPrimary"
             android:background="@null"
+            android:text="@string/action_register"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/default_size"
             app:layout_constraintBottom_toBottomOf="@+id/radioButton"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
-            app:layout_constraintHorizontal_bias="0.766"
-            app:layout_constraintStart_toEndOf="@+id/radioButton"
             app:layout_constraintTop_toTopOf="@+id/radioButton"
-            app:layout_constraintVertical_bias="0.38" />
+            app:layout_constraintVertical_bias="0.437" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.66" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="106dp"
+            android:layout_height="91dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/edite_username"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_baseline_tools_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
