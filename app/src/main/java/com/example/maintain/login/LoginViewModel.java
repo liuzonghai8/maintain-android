@@ -73,7 +73,7 @@ public class LoginViewModel extends AndroidViewModel {
         String result = EncryptUtil.calculateKey(username.getValue(), device);
         // Log.d("TAG_LOG","-----calculate key-----"+result);
         String key = getKey();
-        String s = EncryptUtil.calculateKey("18812345678", "f3a2d2abfa17862f");
+        String s = EncryptUtil.calculateKey("18812345678", "fe4b1f218dfc9520");
         Log.d("TAG_LOG", "-----测试s.-----" + s);
         //比较两个可以
         return EncryptUtil.calculateKey(username.getValue(), device).equals(getKey());
@@ -113,12 +113,12 @@ public class LoginViewModel extends AndroidViewModel {
         if (flag == null) {
             flag = new MutableLiveData<Boolean>();
             flag.setValue(false);
-            Log.d("TAG_LOG", "---getFlag --初始化 ---false-");
+           // Log.d("TAG_LOG", "---getFlag --初始化 ---false-");
         }
         if (getKey() == "" || getKey() == null) {
-            Log.d("TAG_LOG", "---getFlag--- getkey---:" + getKey().toString());
+           // Log.d("TAG_LOG", "---getFlag--- getkey---:" + getKey().toString());
             flag.setValue(true);
-            Log.d("TAG_LOG", "---getFlag--- getkey---false-");
+           // Log.d("TAG_LOG", "---getFlag--- getkey---false-");
         }
         return flag;
     }

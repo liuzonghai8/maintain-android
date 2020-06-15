@@ -15,6 +15,7 @@ import com.example.maintain.MainActivity;
 import com.example.maintain.R;
 import com.example.maintain.databinding.ActivityLoginBinding;
 import com.example.maintain.utils.DateUtil;
+import com.example.maintain.utils.SharedData;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG_LOG = "TAG_LOG";
@@ -73,6 +74,9 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, R.string.toast_login_failed, Toast.LENGTH_LONG).show();
                     return;
                 }
+                SharedData sd = new SharedData(getApplication());
+                sd.save(getString(R.string.shared_file_name),getString(R.string.login_user_name),model.getUsername().getValue());
+
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();

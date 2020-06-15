@@ -1,4 +1,4 @@
-package com.example.maintain.ui.home;
+package com.example.maintain.ui.me;
 
 import androidx.lifecycle.ViewModelProviders;
 
@@ -14,24 +14,24 @@ import android.view.ViewGroup;
 
 import com.example.maintain.R;
 
-public class HomeFragment extends Fragment {
+public class AboutFragment extends Fragment {
 
-    private HomeViewModel mViewModel;
+    private AboutViewModel mViewModel;
 
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
+    public static AboutFragment newInstance() {
+        return new AboutFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_about, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(AboutViewModel.class);
         // TODO: Use the ViewModel
     }
 

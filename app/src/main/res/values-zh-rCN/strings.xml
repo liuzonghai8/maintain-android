@@ -7,7 +7,7 @@
     <string name="invalid_phone">"账号必须是11位电话号码 "</string>
     <string name="login_failed">登陆失败</string>
     <string name="title_home">主页</string>
-    <string name="title_tools">工具</string>
+    <string name="title_tool">工具</string>
     <string name="title_learn">学习</string>
     <string name="title_notifications">通知</string>
     <string name="title_dashboard">监控</string>
@@ -20,7 +20,7 @@
     <string name="action_register">注册</string>
     <string name="title_remember_me">记住我</string>
     <string name="edite_hint_input">请输入电话号码</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">维护</string>
     <string name="hint_input_key">请复制上面的数字串和手机号码，获取key，并粘贴到此</string>
     <string name="hint_divcie">设备序列号</string>
     <string name="shared_file_name">sharedKey</string>
@@ -32,4 +32,7 @@
     <string name="but_save_key">保存Key</string>
     <string name="tag_log">TAG_LOG</string>
     <string name="but_clear_key">清空Key</string>
+    <string name="login_user_name">userName</string>
+    <string name="hint_search">请输入搜索关键字</string>
+    <string name="hello_blank_fragment">"d "</string>
 </resources>

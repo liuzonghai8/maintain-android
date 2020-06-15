@@ -9,7 +9,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title_tools">tools</string>
+    <string name="title_tool">tool</string>
     <string name="title_learn">learn</string>
     <string name="title_code">ErrorCode</string>
     <string name="title_me">me</string>
@@ -19,7 +19,7 @@
     <string name="version">" 0.5 version"</string>
     <string name="action_register">register</string>
     <string name="title_remember_me">remember_me</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">main</string>
     <string name="edite_hint_input">please input phone number</string>
     <string name="hint_input_key">Please copy the numeric string and phone number above, get the key, and paste it here</string>
     <string name="hint_divcie">divcie_Id</string>
@@ -32,6 +32,10 @@
     <string name="toast_login_failed_date">Please contact the developer for Key expired</string>
     <string name="tag_log">TAG_LOG</string>
     <string name="but_clear_key">clearKey</string>
+    <string name="login_user_name">userName</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_search">Please enter the search keyword</string>
 
 
 </resources>

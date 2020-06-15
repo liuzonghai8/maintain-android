@@ -1,4 +1,4 @@
-package com.example.maintain.ui.home;
+package com.example.maintain.ui.learn;
 
 import androidx.lifecycle.ViewModelProviders;
 
@@ -14,24 +14,24 @@ import android.view.ViewGroup;
 
 import com.example.maintain.R;
 
-public class HomeFragment extends Fragment {
+public class LearnFragment extends Fragment {
 
-    private HomeViewModel mViewModel;
+    private LearnViewModel mViewModel;
 
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
+    public static LearnFragment newInstance() {
+        return new LearnFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_learn, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(LearnViewModel.class);
         // TODO: Use the ViewModel
     }
 
