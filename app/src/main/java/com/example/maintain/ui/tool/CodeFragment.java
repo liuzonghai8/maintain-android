@@ -48,18 +48,31 @@ public class CodeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Code code=new Code(0,"0000","正常","not advise");
-        codes.add(code);
-
+        Bundle args = getArguments();
+        Log.d("TAG_LOG","---args----"+args);
+        switch (args.getInt(ARG_OBJECT)){
+            case 1:
+                for(int i=0;i<100;i++){
+                    Code code=new Code(i,"YH0"+i,"YH正常"+i,"not个梵蒂冈刚电饭锅电饭锅电饭锅发鬼地方个地方官的非官方个地方官复古风格森岛帆高发鬼地方个梵蒂冈复古风格是大风刮过 advise"+i);
+                    codes.add(code);}
+            case 2:
+                for(int i=0;i<100;i++){
+                    Code code=new Code(i,"HCM000"+i,"HCM正常"+i,"not advise"+i);
+                    codes.add(code);}
+            default:
+                for(int i=0;i<100;i++){
+                    Code code=new Code(i,"其它 000"+i,"其它 正常"+i,"not advise"+i);
+                    codes.add(code);}
+        }
         recyclerView=view.findViewById(R.id.recyclerView);
         codeAdapter= new CodeAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setAdapter(codeAdapter);
         codeAdapter.setAllCodes(codes);
+        //有变更时更新数据
         codeAdapter.notifyDataSetChanged();
 
-         Bundle args = getArguments();
-        Log.d("TAG_LOG","---args----"+args);
+
 
     }
 }
