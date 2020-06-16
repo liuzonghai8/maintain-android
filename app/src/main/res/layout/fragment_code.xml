@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.maintain.ui.tool.CodeViewModel" />
+    </data>
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.tool.CodeFragment">
-
     <EditText
-        android:id="@+id/intput_key"
+        android:id="@+id/key_word"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginEnd="10dp"
         android:autofillHints=""
+        android:text="@={data.keyWord}"
         android:drawableStart="@drawable/ic_search_24"
         android:drawableLeft="@drawable/ic_search_24"
         android:ems="10"
@@ -25,3 +34,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>
+</layout>

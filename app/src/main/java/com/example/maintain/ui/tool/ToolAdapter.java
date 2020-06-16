@@ -19,7 +19,7 @@ public class ToolAdapter extends FragmentStateAdapter {
         Fragment fragment = new CodeFragment();
         Bundle args = new Bundle();
         // Our object is just an integer :-P
-        args.putInt(CodeFragment.ARG_OBJECT, position + 1);
+        args.putInt(CodeFragment.TAB_SELECT, position + 1);
         fragment.setArguments(args);
         return fragment;
     }

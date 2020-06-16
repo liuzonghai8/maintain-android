@@ -1,11 +1,12 @@
 package com.example.maintain.ui.tool;
 
-public class Code {
+public class Code2 {
     private int id;
     private String codeName;
     private String analysis;
+    private String advise;
 
-    public Code(int id, String codeName, String analysis, String advise) {
+    public Code2(int id, String codeName, String analysis, String advise) {
         this.id = id;
         this.codeName = codeName;
         this.analysis = analysis;
@@ -28,7 +29,7 @@ public class Code {
         this.advise = advise;
     }
 
-    private String advise;
+
 
     public int getId() {
         return id;

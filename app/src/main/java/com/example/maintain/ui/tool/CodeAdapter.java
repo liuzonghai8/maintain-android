@@ -15,9 +15,9 @@ import java.util.List;
 
 public class CodeAdapter extends RecyclerView.Adapter<CodeAdapter.MyHolder> {
 
-    List<Code> allCodes = new ArrayList<>();
+    List<Code2> allCodes = new ArrayList<>();
 
-    public void setAllCodes(List<Code> allCodes) {
+    public void setAllCodes(List<Code2> allCodes) {
         this.allCodes = allCodes;
     }
 
@@ -42,7 +42,7 @@ public class CodeAdapter extends RecyclerView.Adapter<CodeAdapter.MyHolder> {
      */
      @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        Code code = allCodes.get(position);
+        Code2 code = allCodes.get(position);
         holder.textViewId.setText(String.valueOf(position));
         holder.textViewCode.setText("故障码: "+code.getCodeName());
         holder.textViewAdvise.setText("建  议："+code.getAdvise());
@@ -54,7 +54,7 @@ public class CodeAdapter extends RecyclerView.Adapter<CodeAdapter.MyHolder> {
      */
     @Override
     public int getItemCount() {
-        return allCodes.size();
+        return allCodes!=null?allCodes.size():0;
     }
 
     class MyHolder extends RecyclerView.ViewHolder {
@@ -66,7 +66,6 @@ public class CodeAdapter extends RecyclerView.Adapter<CodeAdapter.MyHolder> {
             textViewCode = itemView.findViewById(R.id.text_code);
             textViewAnalysis = itemView.findViewById(R.id.text_analysis);
             textViewAdvise = itemView.findViewById(R.id.text_advise);
-            //this.codeAdapter = codeAdapter;
         }
     }
 }

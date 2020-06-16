@@ -4,17 +4,26 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.maintain.R;
+import com.example.maintain.databinding.FragmentCodeBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,53 +34,55 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class CodeFragment extends Fragment {
-    public static final String ARG_OBJECT = "ARGS:";
+    public static final String TAB_SELECT = "tab_select:";
     CodeAdapter codeAdapter;
-    RecyclerView recyclerView;
-
-    private List<Code> codes=new ArrayList<>();
+    private CodeViewModel model;
+    private FragmentCodeBinding binding;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_code, container, false);
+       binding= DataBindingUtil.inflate(inflater, R.layout.fragment_code, container, false);
+        model= new ViewModelProvider(requireActivity()).get(CodeViewModel.class);
+        binding.setLifecycleOwner(this);
+        binding.setData(model);
+        View view =binding.getRoot();
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Bundle args = getArguments();
-        Log.d("TAG_LOG","---args----"+args);
-        switch (args.getInt(ARG_OBJECT)){
-            case 1:
-                for(int i=0;i<100;i++){
-                    Code code=new Code(i,"YH0"+i,"YH正常"+i,"not个梵蒂冈刚电饭锅电饭锅电饭锅发鬼地方个地方官的非官方个地方官复古风格森岛帆高发鬼地方个梵蒂冈复古风格是大风刮过 advise"+i);
-                    codes.add(code);}
-            case 2:
-                for(int i=0;i<100;i++){
-                    Code code=new Code(i,"HCM000"+i,"HCM正常"+i,"not advise"+i);
-                    codes.add(code);}
-            default:
-                for(int i=0;i<100;i++){
-                    Code code=new Code(i,"其它 000"+i,"其它 正常"+i,"not advise"+i);
-                    codes.add(code);}
-        }
-        recyclerView=view.findViewById(R.id.recyclerView);
+        final Bundle args = getArguments();
         codeAdapter= new CodeAdapter();
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        recyclerView.setAdapter(codeAdapter);
-        codeAdapter.setAllCodes(codes);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        binding.recyclerView.setAdapter(codeAdapter);
+        codeAdapter.setAllCodes(model.getListCodes().getValue());
         //有变更时更新数据
-        codeAdapter.notifyDataSetChanged();
+      //  codeAdapter.notifyDataSetChanged();
 
+        Log.d("TAG_LOG","---args----"+args);
+        model.getKeyWord().observe(requireActivity(), new Observer<String>() {
+            @Override
+            public void onChanged(String key) {
+                Log.d("TAG_LOG", "-----model--message-----"+key);
+                model.generateData(key,args.getInt(TAB_SELECT));
+                //有变更时更新数据
+                codeAdapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
 
     }
