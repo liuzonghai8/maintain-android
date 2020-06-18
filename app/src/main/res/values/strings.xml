@@ -20,9 +20,9 @@
     <string name="action_register">register</string>
     <string name="title_remember_me">remember_me</string>
     <string name="title_activity_main">main</string>
-    <string name="edite_hint_input">please input phone number</string>
+    <string name="edit_hint_input">please input phone number</string>
     <string name="hint_input_key">Please copy the numeric string and phone number above, get the key, and paste it here</string>
-    <string name="hint_divcie">divcie_Id</string>
+    <string name="hint_device">divcie_Id</string>
     <string name="but_save_key">saveKey</string>
     <string name="shared_file_name">sharedKey</string>
     <string name="shared_key">key</string>

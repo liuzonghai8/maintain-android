@@ -19,10 +19,10 @@
     <string name="version">0.5版本</string>
     <string name="action_register">注册</string>
     <string name="title_remember_me">记住我</string>
-    <string name="edite_hint_input">请输入电话号码</string>
+    <string name="edit_hint_input">请输入电话号码</string>
     <string name="title_activity_main">维护</string>
     <string name="hint_input_key">请复制上面的数字串和手机号码，获取key，并粘贴到此</string>
-    <string name="hint_divcie">设备序列号</string>
+    <string name="hint_device">设备序列号</string>
     <string name="shared_file_name">sharedKey</string>
     <string name="shared_key">key</string>
     <string name="toast_login_failed">登录认证错误，请联系开发者</string>

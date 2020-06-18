@@ -1,8 +1,6 @@
-package com.example.maintain.login;
+package com.example.maintain.login2;
 
 import android.app.Application;
-import android.content.Context;
-import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -17,18 +15,19 @@ import com.example.maintain.utils.SharedData;
 
 public class LoginViewModel extends AndroidViewModel {
     private static final String TAG_LOG = "Tag_log";
+    //登陆界面
     private MutableLiveData<String> username;
     private MutableLiveData<Boolean> valid;
-    //edit_key
+    //edit_key 注册界面
     private MutableLiveData<String> userKey;
     public MutableLiveData<Boolean> flag;
+   //保存
     //key
     private final String keyName = getApplication().getString(R.string.shared_key);
     //file
     private final String fileName = getApplication().getString(R.string.shared_file_name);
     //device NO.
     public final String device = MobileInfoUtil.getIMEI(getApplication());
-    private Context content = getApplication();
 
 
     public LoginViewModel(@NonNull Application application) {
@@ -49,7 +48,7 @@ public class LoginViewModel extends AndroidViewModel {
     // 永久保存key
     public void saveKey() {
 //        Context content = getApplication();
-        SharedData sd = new SharedData(content);
+        SharedData sd = new SharedData(getApplication());
         if (flag.getValue()) {
             sd.save(fileName, keyName, userKey.getValue());
             flag.setValue(false);
@@ -63,7 +62,7 @@ public class LoginViewModel extends AndroidViewModel {
 
     public String getKey() {
         //从文件中读取key
-        SharedData sd = new SharedData(content);
+        SharedData sd = new SharedData(getApplication());
         return sd.load(fileName, keyName);
     }
 

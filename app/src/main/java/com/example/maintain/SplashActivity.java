@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 
-import com.example.maintain.login.LoginActivity;
 import com.example.maintain.utils.ThreadUtils;
 
 public class SplashActivity extends AppCompatActivity {
@@ -22,7 +21,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 //停留3秒
                 SystemClock.sleep(3000);
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                //启动LoginActivity
                 startActivity(intent);
                 //销毁当前Activity

@@ -6,48 +6,14 @@
     <data>
         <variable
             name="data"
-            type="com.example.maintain.login2.LoginViewModel" />
+            type="com.example.maintain.ui.login.RegisterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout5"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:id="@+id/but_save"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:onClick="@{()->data.saveKey()}"
-            android:text="@string/but_save_key"
-            android:textColor="#FFFFFF"
-            android:textSize="@dimen/default_size"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/eidt_key"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/eidt_key"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.464" />
-
-        <EditText
-            android:id="@+id/eidt_key"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:ems="10"
-            android:focusable="@{data.flag}"
-            android:gravity="start|top"
-            android:hint="@string/hint_input_key"
-            android:inputType="textMultiLine"
-            android:lines="4"
-            android:text="@={data.userKey}"
-            android:textIsSelectable="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/text_title"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/text_title"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.322" />
+        android:layout_height="match_parent"
+        tools:context=".ui.login.RegisterFragment">
 
         <TextView
             android:id="@+id/text_title"
@@ -58,17 +24,51 @@
             android:layout_marginEnd="24dp"
             android:layout_marginRight="24dp"
             android:gravity="center"
-            android:hint="@string/hint_device"
             android:text="@{data.device}"
+            android:textIsSelectable="true"
+            android:hint="@string/hint_device"
+            android:textSize="@dimen/default_size"
             android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.245" />
+
+        <EditText
+            android:id="@+id/edit_key"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/hint_input_key"
+            android:inputType="textMultiLine"
+            android:lines="4"
+            android:text="@={data.userKey}"
             android:textIsSelectable="true"
             android:textSize="@dimen/default_size"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/text_title"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/text_title"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.217" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintVertical_bias="0.352" />
 
+        <Button
+            android:id="@+id/but_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/but_save_key"
+            android:textSize="@dimen/default_size"
+            android:onClick="@{()->data.saveKey()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/edit_key"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/edit_key"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.518" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

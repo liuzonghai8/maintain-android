@@ -7,13 +7,13 @@
 
         <variable
             name="data"
-            type="com.example.maintain.login.LoginViewModel" />
+            type="com.example.maintain.login2.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".login.LoginActivity">
+        tools:context=".login2.LoginActivity">
 
         <EditText
             android:id="@+id/edite_username"
@@ -27,7 +27,7 @@
             android:drawableStart="@drawable/ic_person_50"
             android:drawableLeft="@drawable/ic_baseline_person_24"
             android:ems="10"
-            android:hint="@string/edite_hint_input"
+            android:hint="@string/edit_hint_input"
             android:inputType="phone"
             android:shadowColor="#FFFFFF"
             android:text="@={data.username}"
