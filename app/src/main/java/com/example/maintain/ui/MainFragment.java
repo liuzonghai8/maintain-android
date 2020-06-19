@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.maintain.R;
 import com.example.maintain.ui.login.LoginViewModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainFragment extends Fragment {
     private LoginViewModel loginViewModel;
@@ -40,7 +43,10 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(view);
+        final NavController navController2 = Navigation.findNavController(requireActivity(),R.id.nav_host_fragment);
         //navController.navigate(R.id.login_Fragment);
+        BottomNavigationView navView = view.findViewById(R.id.bottom_nav);
+        NavigationUI.setupWithNavController(navView, navController2);
         loginViewModel= new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
         loginViewModel.authenticationState.observe(getViewLifecycleOwner(),
                 new Observer<LoginViewModel.AuthenticationState>() {

@@ -1,12 +1,10 @@
-package com.example.maintain.data.dao;
+package com.example.maintain.data.code;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
-
-import com.example.maintain.data.entity.Code;
 
 import java.util.List;
 

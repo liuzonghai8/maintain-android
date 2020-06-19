@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-     <variable
-         name="data"
-         type="com.example.maintain.ui.login.LoginViewModel" />
+
+        <variable
+            name="data"
+            type="com.example.maintain.ui.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,16 +32,19 @@
             android:id="@+id/but_login"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:clickable="@{data.valid}"
             android:onClick="@{()->data.authenticate()}"
             android:text="@string/action_sign_in"
+            android:textColor="@color/design_default_color_background"
             android:textColorHint="@color/colorPrimary"
             android:textSize="@dimen/default_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/edit_phone"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/edit_phone"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6" />
+            app:layout_constraintVertical_bias="0.606" />
 
         <EditText
             android:id="@+id/edit_phone"
@@ -60,24 +64,25 @@
             android:textSize="@dimen/default_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.43" />
+            app:layout_constraintVertical_bias="0.418" />
 
         <Button
             android:id="@+id/bt_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:layout_marginRight="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
             android:background="@null"
+            android:gravity="start"
             android:text="@string/action_register"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/default_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.52" />

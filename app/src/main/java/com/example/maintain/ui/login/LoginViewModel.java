@@ -2,8 +2,10 @@ package com.example.maintain.ui.login;
 
 import android.app.Application;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
@@ -13,68 +15,67 @@ import com.example.maintain.utils.EncryptUtil;
 import com.example.maintain.utils.MobileInfoUtil;
 import com.example.maintain.utils.PhoneUtils;
 import com.example.maintain.utils.SharedData;
+import com.google.android.material.snackbar.Snackbar;
 
 public class LoginViewModel extends AndroidViewModel {
+    public enum AuthenticationState {
+        UNAUTHENTICATED,        // Initial state, the user needs to authenticate
+        AUTHENTICATED,          // The user has authenticated successfully
+        INVALID_AUTHENTICATION  // Authentication failed
+    }
 
-
-        public enum AuthenticationState {
-            UNAUTHENTICATED,        // Initial state, the user needs to authenticate
-            AUTHENTICATED,          // The user has authenticated successfully
-            INVALID_AUTHENTICATION  // Authentication failed
-        }
-
-       public final MutableLiveData<AuthenticationState> authenticationState =
-                new MutableLiveData<>();
-
-    public final MutableLiveData<String>  username= new MutableLiveData<>();
-    public final MutableLiveData<Boolean> valid=new MutableLiveData<>();
-
-    private final SharedData sharedData = new SharedData(getApplication().getApplicationContext());
+    public final MutableLiveData<AuthenticationState> authenticationState =
+            new MutableLiveData<>();
+    public final MutableLiveData<String> username = new MutableLiveData<>();
+    public final MutableLiveData<Boolean> valid = new MutableLiveData<>();
     public final String device = MobileInfoUtil.getIMEI(getApplication());
-
-
+    private final SharedData sharedData = new SharedData(getApplication().getApplicationContext());
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
         // In this example, the user is always unauthenticated when MainActivity is launched
-            authenticationState.setValue(AuthenticationState.UNAUTHENTICATED);
-            username.setValue("");
+        authenticationState.setValue(AuthenticationState.AUTHENTICATED);//AuthenticationState.UNAUTHENTICATED);
+        username.setValue("");
+        valid.setValue(true);
     }
 
     //认证 绑定login登陆按钮
-        public void authenticate() {
-           // Log.d("TAG_LOG","-----authenticate-- 认证开始---");
-           // SharedData sd = new SharedData(getApplication());
-            if (keyIsValidForUsername()) {
-                //存储用户名至share
-                sharedData.saveUserName(username.getValue());
-                authenticationState.setValue(AuthenticationState.AUTHENTICATED);
-            } else {
-                sharedData.saveUserName("");
-                authenticationState.setValue(AuthenticationState.INVALID_AUTHENTICATION);
-            }
+    public void authenticate() {
+        // Log.d("TAG_LOG","-----authenticate-- 认证开始---");
+        // SharedData sd = new SharedData(getApplication());
+        if (keyIsValidForUsername()) {
+            //存储用户名至share
+            sharedData.saveUserName(username.getValue());
+            authenticationState.setValue(AuthenticationState.AUTHENTICATED);
+        } else {
+            sharedData.saveUserName("");
+            authenticationState.setValue(AuthenticationState.INVALID_AUTHENTICATION);
         }
-        //拒绝
-        public void refuseAuthentication() {
-            authenticationState.setValue(AuthenticationState.UNAUTHENTICATED);
-        }
-        //认证电话号码和存储的key是否正确
-        private boolean keyIsValidForUsername() {
-           Boolean result= DateUtil.compareDate(getApplication().getString(R.string.start_datte),getApplication().getString(R.string.end_date));
-           // Log.d("TAG_LOG","--------DateUtil.compareDate日期------"+result);
-           if(compareKey()&&result){
-             Log.d("TAG_LOG","--------key和日期核对正确------");
-               return true;
-           }
-           // Log.d("TAG_LOG","--------key核对失败------");
+    }
+
+    //拒绝
+    public void refuseAuthentication() {
+        authenticationState.setValue(AuthenticationState.UNAUTHENTICATED);
+    }
+
+    //认证电话号码和存储的key是否正确
+    private boolean keyIsValidForUsername() {
+        if (!DateUtil.compareDate(getApplication().getString(R.string.start_datte), getApplication().getString(R.string.end_date))) {
+            Log.d("TAG_LOG", "--------日期过期------");
             return false;
         }
+        if (!compareKey()) {
+            Log.d("TAG_LOG", "--------key核对不正确------");
+            return false;
+        }
+        return true;
+    }
 
     //比较Key
     public Boolean compareKey() {
         //计算key
-        String result = EncryptUtil.calculateKey(username.getValue(), device);
-       //  Log.d("TAG_LOG","-----calculate key-----"+result+username.getValue());
+     //   String result = EncryptUtil.calculateKey(username.getValue(), device);
+        //  Log.d("TAG_LOG","-----calculate key-----"+result+username.getValue());
 //        String key = sharedData.loadKey();
         String s = EncryptUtil.calculateKey("18812345678", "fe4b1f218dfc9520");
         Log.d("TAG_LOG", "-----测试s.-----" + s);
@@ -92,6 +93,7 @@ public class LoginViewModel extends AndroidViewModel {
         valid.setValue(false);
         return false;
     }
+
 
 
 }
