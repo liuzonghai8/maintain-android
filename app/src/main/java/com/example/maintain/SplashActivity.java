@@ -21,7 +21,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 //停留3秒
                 SystemClock.sleep(3000);
-                Intent intent = new Intent(SplashActivity.this, Main2Activity.class);
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                //启动LoginActivity
                 startActivity(intent);
                 //销毁当前Activity

@@ -19,11 +19,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.maintain.R;
+import com.example.maintain.basic.BasicFragment;
 import com.example.maintain.databinding.FragmentLoginBinding;
 import com.example.maintain.ui.tool.CodeViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
-public class LoginFragment extends Fragment {
+public class LoginFragment extends BasicFragment {
 
     private LoginViewModel viewModel;
     private FragmentLoginBinding binding;

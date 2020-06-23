@@ -32,11 +32,13 @@ public class CodeAdapter extends RecyclerView.Adapter<CodeAdapter.MyHolder> {
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
+        //使用哪个页面layout
         View viewItem =layoutInflater.inflate(R.layout.cell_code_card,parent,false);
         return new MyHolder(viewItem);
     }
 
     /**
+     * 绑定页面UI
      * sets the contents of a View item at a given position in the RecyclerView.
      *     This is called by the RecyclerView, for example, when a new View item scrolls onto the screen.
      */

@@ -1,5 +1,6 @@
 package com.example.maintain.ui.tool;
 
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -7,20 +8,24 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.maintain.R;
+import com.example.maintain.basic.BasicFragment;
+import com.example.maintain.databinding.FragmentCodeBinding;
+import com.example.maintain.databinding.FragmentToolBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-public class ToolFragment extends Fragment {
+public class ToolFragment extends BasicFragment {
     ToolAdapter toolAdapter;
-    ViewPager2 viewPager;
-    private ToolViewModel mViewModel;
+    FragmentToolBinding binding;
     private  String[]  tabsTitle={"YH","3260","ATM响应码","ATM响应码"};
 
     public static ToolFragment newInstance() {
@@ -30,30 +35,26 @@ public class ToolFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_tool, container, false);
-    }
+        binding= FragmentToolBinding.inflate(inflater, container, false);
+        toolAdapter = new ToolAdapter(this);
+        TabLayout tabs= binding.tabs;
+        ViewPager2 pager=binding.pager;
+        pager.setAdapter(toolAdapter);
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(ToolViewModel.class);
-        // TODO: Use the ViewModel
+        //设置标题
+        new TabLayoutMediator(tabs, pager, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                //在界面创建的时候设置title
+                tab.setText(tabsTitle[position]);
+            }
+        }).attach();
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        toolAdapter = new ToolAdapter(this);
-        viewPager = view.findViewById(R.id.pager);
-        viewPager.setAdapter(toolAdapter);
 
-        TabLayout tabLayout = view.findViewById(R.id.tab_layout);
-        //tab 也标题
-        new TabLayoutMediator(tabLayout, viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override
-            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                tab.setText(tabsTitle[position]);
-            }
-        }).attach();
     }
 }
