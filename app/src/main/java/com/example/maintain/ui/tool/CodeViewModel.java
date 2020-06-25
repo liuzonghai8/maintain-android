@@ -45,6 +45,7 @@ public class CodeViewModel extends ViewModel {
                     codes1.add(code);
                 }
                 listCodes.setValue(codes1);
+                break;
             case 2:
                 List<Code2> codes2 = new ArrayList<>();
                 for (int i = 0; i < 100; i++) {
@@ -52,6 +53,7 @@ public class CodeViewModel extends ViewModel {
                     codes2.add(code);
                 }
                 listCodes.setValue(codes2);
+                break;
             default:
                 List<Code2> codes3 = new ArrayList<>();
                 for (int i = 0; i < 100; i++) {
@@ -59,6 +61,7 @@ public class CodeViewModel extends ViewModel {
                     codes3.add(code);
                 }
                 listCodes.setValue(codes3);
+                break;
         }
     }
 

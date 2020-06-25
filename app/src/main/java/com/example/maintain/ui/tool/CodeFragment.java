@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -46,12 +47,23 @@ public class CodeFragment extends BasicFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String key, @NonNull Bundle bundle) {
+                // We use a String here, but any type that can be put in a Bundle is supported
+                //    result = bundle.getString("bundleKey");
+//                args=bundle;
+                int tab_select_tool = bundle.getInt("TAB_SELECT_Tool");
+//                tabSelect = tab_select_tool;
+                // Do something with the result...
+                Log.d(TAG_LOG,"---CodeFragment onFragmentResult----"+tab_select_tool);
+            }
+        });
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d(TAG_LOG,"---onCreateView----");
         // Inflate the layout for this fragment
       // binding= DataBindingUtil.inflate(inflater, R.layout.fragment_code, container, false);
        binding= FragmentCodeBinding.inflate(inflater, container, false);
@@ -59,31 +71,29 @@ public class CodeFragment extends BasicFragment {
         binding.setData(model);
         binding.setLifecycleOwner(this);
         return  binding.getRoot();
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Log.d(TAG_LOG,"---onViewCreated----");
-        final Bundle args = getArguments();
+//        final Bundle args = getArguments();
+//        Log.d(TAG_LOG,"--CodeFragment -args----"+args);
         codeAdapter= new CodeAdapter();
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.recyclerView.setAdapter(codeAdapter);
         codeAdapter.setAllCodes(model.getListCodes().getValue());
         //有变更时更新数据
         //codeAdapter.notifyDataSetChanged();
+        //监听父Fragment的改变
+        final Bundle args;
+        int tabSelect=0;
+
 
         //keyword 监控
-        subscribeKey(args.getInt(TAB_SELECT));
+        subscribeKey(tabSelect);
         //列表数据的监控
         subscribeUi();
-
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.d(TAG_LOG,"---onActivityCreated----");
 
     }
 
@@ -102,8 +112,8 @@ public class CodeFragment extends BasicFragment {
         model.getKeyWord().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String key) {
-                Log.d(TAG_LOG,"-----model.getKeyWord().observe key-----"+key);
-                Log.d(TAG_LOG,"-----model.getKeyWord().observe -----"+num);
+                Log.d(TAG_LOG,"---CodeFragment--model.getKeyWord().observe key-----"+key);
+                Log.d(TAG_LOG,"---CodeFragment--model.getKeyWord().observe -----"+num);
                 //根据关键字查找数据
                 model.generateData(key,num);
             }
