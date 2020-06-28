@@ -28,8 +28,12 @@ import com.google.android.material.tabs.TabLayoutMediator;
 public class ToolFragment extends BasicFragment {
     private ToolAdapter toolAdapter;
     private FragmentToolBinding binding;
+    private CodeViewModel model;
+    //tabs 标题
     private String[] tabsTitle = {"YH", "3260", "ATM响应码", "ATM响应码"};
     public static final String TAB_SELECT_Tool = "TAB_SELECT_Tool";
+
+
 
     public static ToolFragment newInstance() {
         return new ToolFragment();
@@ -38,11 +42,15 @@ public class ToolFragment extends BasicFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        //绑定页面
         binding = FragmentToolBinding.inflate(inflater, container, false);
         toolAdapter = new ToolAdapter(this);
         final TabLayout tabs = binding.tabs;
         final ViewPager2 pager = binding.pager;
         pager.setAdapter(toolAdapter);
+
+        //绑定数据
+        model=new ViewModelProvider(requireActivity()).get(CodeViewModel.class);
 
         //设置标题 TabLayout传递
         new TabLayoutMediator(tabs, pager, new TabLayoutMediator.TabConfigurationStrategy() {
@@ -50,7 +58,7 @@ public class ToolFragment extends BasicFragment {
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 //在界面创建的时候设置title
                 tab.setText(tabsTitle[position]);
-                Log.d(TAG_LOG, "=====key =====");
+                //Log.d(TAG_LOG, "=====key =====");
             }
         }).attach();
 
@@ -58,12 +66,9 @@ public class ToolFragment extends BasicFragment {
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                Log.d(TAG_LOG,"===tab selected===="+tab.getPosition());
-                Bundle tabPosition = new Bundle();
-                // Our object is just an integer :-P
-                tabPosition.putInt(ToolFragment.TAB_SELECT_Tool, tab.getPosition());
-                getParentFragmentManager().setFragmentResult("requestKey",tabPosition);
-                Log.d(TAG_LOG,"===tab selected= tabPosition==="+tabPosition);
+                 Log.d(TAG_LOG,"===tab selected===="+tab.getPosition());
+                model.tabSelect.setValue(tab.getPosition());
+
             }
 
             @Override

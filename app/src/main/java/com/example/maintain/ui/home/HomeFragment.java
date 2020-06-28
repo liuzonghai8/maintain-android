@@ -1,5 +1,6 @@
 package com.example.maintain.ui.home;
 
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -31,7 +32,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+        mViewModel =new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
         // TODO: Use the ViewModel
     }
 

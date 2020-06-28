@@ -28,13 +28,15 @@ public class LoginViewModel extends AndroidViewModel {
             new MutableLiveData<>();
     public final MutableLiveData<String> username = new MutableLiveData<>();
     public final MutableLiveData<Boolean> valid = new MutableLiveData<>();
+
     public final String device = MobileInfoUtil.getIMEI(getApplication());
     private final SharedData sharedData = new SharedData(getApplication().getApplicationContext());
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
         // In this example, the user is always unauthenticated when MainActivity is launched
-        authenticationState.setValue(AuthenticationState.AUTHENTICATED);//AuthenticationState.UNAUTHENTICATED);
+//        authenticationState.setValue(AuthenticationState.UNAUTHENTICATED);
+        authenticationState.setValue(AuthenticationState.AUTHENTICATED);
         username.setValue("");
         valid.setValue(true);
     }

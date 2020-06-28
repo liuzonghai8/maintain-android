@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nar_maintain"
-    app:startDestination="@id/main_Fragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/main_Fragment"
@@ -24,4 +24,9 @@
         android:name="com.example.maintain.ui.login.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.maintain.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" />
 </navigation>

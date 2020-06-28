@@ -1,5 +1,6 @@
 package com.example.maintain.ui;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -24,7 +25,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainFragment extends BasicFragment {
     private LoginViewModel loginViewModel;
-   // private MainPageViewModel mViewModel;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -39,25 +39,9 @@ public class MainFragment extends BasicFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final NavController navController = Navigation.findNavController(view);
-        final NavController navController2 = Navigation.findNavController(requireActivity(),R.id.nav_host_fragment);
-        //navController.navigate(R.id.login_Fragment);
+        final NavController navController = Navigation.findNavController(requireActivity(),R.id.nav_host_fragment);
         BottomNavigationView navView = view.findViewById(R.id.bottom_nav);
-        NavigationUI.setupWithNavController(navView, navController2);
-        loginViewModel= new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
-        loginViewModel.authenticationState.observe(getViewLifecycleOwner(),
-                new Observer<LoginViewModel.AuthenticationState>() {
-                    @Override
-                    public void onChanged(LoginViewModel.AuthenticationState authenticationState) {
-                        switch (authenticationState) {
-                            case AUTHENTICATED:
-                                Log.d(TAG_LOG,"-----main fragment----");
-                                break;
-                            case UNAUTHENTICATED:
-                                navController.navigate(R.id.login_Fragment);
-                                break;
-                        }
-                    }
-                });
+        NavigationUI.setupWithNavController(navView, navController);
+
     }
 }

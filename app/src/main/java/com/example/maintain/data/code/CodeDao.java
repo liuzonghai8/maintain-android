@@ -11,7 +11,7 @@ import java.util.List;
 @Dao
 public interface CodeDao  {
     @Insert
-    void addCode(Code...codes);
+    void saveCode(Code...codes);
 
     @Update
     void updateCode(Code...codes);
@@ -24,4 +24,7 @@ public interface CodeDao  {
 
     @Query("SELECT * FROM code WHERE code_name LIKE :search")
     List<Code> findCodeWithName(String search);
+
+   @Query("SELECT * FROM code WHERE device_type = :type AND code_name LIKE :search")
+   List<Code> findCodeWithNameAndType(String type,String search);
 }

@@ -9,15 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.maintain.R;
+import com.example.maintain.data.code.Code;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CodeAdapter extends RecyclerView.Adapter<CodeAdapter.MyHolder> {
 
-    List<Code2> allCodes = new ArrayList<>();
+    List<Code> allCodes = new ArrayList<>();
 
-    public void setAllCodes(List<Code2> allCodes) {
+    public void setAllCodes(List<Code> allCodes) {
         this.allCodes = allCodes;
     }
 
@@ -44,7 +45,7 @@ public class CodeAdapter extends RecyclerView.Adapter<CodeAdapter.MyHolder> {
      */
      @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        Code2 code = allCodes.get(position);
+        Code code = allCodes.get(position);
         holder.textViewId.setText(String.valueOf(position));
         holder.textViewCode.setText("故障码: "+code.getCodeName());
         holder.textViewAdvise.setText("建  议："+code.getAdvise());

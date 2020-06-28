@@ -65,7 +65,8 @@ public class LoginFragment extends BasicFragment {
                     public void onChanged(LoginViewModel.AuthenticationState authenticationState) {
                         switch (authenticationState) {
                             case AUTHENTICATED:
-                                navController.popBackStack();
+//                                navController.popBackStack();
+                                navController.navigate(R.id.main_Fragment);
                                 break;
                             case INVALID_AUTHENTICATION:
                                 Snackbar.make(view,

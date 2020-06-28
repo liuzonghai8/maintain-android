@@ -1,35 +1,24 @@
 package com.example.maintain.ui.tool;
 
-import android.app.TaskStackBuilder;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TabHost;
-import android.widget.TextView;
 
-import com.example.maintain.R;
 import com.example.maintain.basic.BasicFragment;
+import com.example.maintain.data.code.Code;
 import com.example.maintain.databinding.FragmentCodeBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -77,46 +66,51 @@ public class CodeFragment extends BasicFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        final Bundle args = getArguments();
-//        Log.d(TAG_LOG,"--CodeFragment -args----"+args);
         codeAdapter= new CodeAdapter();
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.recyclerView.setAdapter(codeAdapter);
-        codeAdapter.setAllCodes(model.getListCodes().getValue());
+//        codeAdapter.setAllCodes(model.listCodes());
         //有变更时更新数据
-        //codeAdapter.notifyDataSetChanged();
-        //监听父Fragment的改变
-        final Bundle args;
-        int tabSelect=0;
 
+        final Integer num = 0;
+
+        //codeAdapter.notifyDataSetChanged();
+        //监听父Fragment tab select changed
+        model.tabSelect.observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+               model.keyWord.setValue("");
+            }
+        });
 
         //keyword 监控
-        subscribeKey(tabSelect);
+        subKeyChangeUi();
         //列表数据的监控
-        subscribeUi();
+        subDataChangeUi();
 
     }
 
-    private void subscribeUi(){
-        model.getListCodes().observe(getViewLifecycleOwner(), new Observer<List<Code2>>() {
+    private void subDataChangeUi(){
+        model.listCodes.observe(getViewLifecycleOwner(), new Observer<List<Code>>() {
             @Override
-            public void onChanged(List<Code2> code2s) {
+            public void onChanged(List<Code> codes) {
                 //设置数据
-                codeAdapter.setAllCodes(model.getListCodes().getValue());
+                codeAdapter.setAllCodes(model.listCodes.getValue());
                 codeAdapter.notifyDataSetChanged();
             }
         });
     }
 
-    private void subscribeKey(final int num){
-        model.getKeyWord().observe(getViewLifecycleOwner(), new Observer<String>() {
+    private void subKeyChangeUi(){
+        model.keyWord.observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
-            public void onChanged(String key) {
-                Log.d(TAG_LOG,"---CodeFragment--model.getKeyWord().observe key-----"+key);
-                Log.d(TAG_LOG,"---CodeFragment--model.getKeyWord().observe -----"+num);
+            public void onChanged(String s) {
+                Log.d(TAG_LOG,"---CodeFragment--model.getKeyWord().observe key-----"+s);
+                Log.d(TAG_LOG,"---CodeFragment--model.getKeyWord().observe -----"+model.tabSelect.getValue());
                 //根据关键字查找数据
-                model.generateData(key,num);
+                model.generateData(s,model.tabSelect.getValue());
             }
         });
+
     }
 }

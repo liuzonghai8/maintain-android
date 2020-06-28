@@ -17,6 +17,10 @@ public class Code {
     //建议
     private String advise;
 
+    //设备型号 [YH 、HCM、ATM&CRS响应码、ITM响应码]
+    @ColumnInfo(name = "device_type")
+    private String deviceType;
+
 
     public void setId(int id) {
         this.id = id;
@@ -34,7 +38,9 @@ public class Code {
         this.advise = advise;
     }
 
-
+    public void setDeviceType(String deviceType) {
+        this.deviceType = deviceType;
+    }
 
     public int getId() {
         return id;
@@ -50,5 +56,9 @@ public class Code {
 
     public String getAdvise() {
         return advise;
+    }
+
+    public String getDeviceType() {
+        return deviceType;
     }
 }
