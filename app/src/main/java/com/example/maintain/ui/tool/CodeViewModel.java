@@ -5,15 +5,12 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-import com.example.maintain.data.AppDatabase;
 import com.example.maintain.data.code.Code;
-import com.example.maintain.data.code.CodeDao;
 import com.example.maintain.data.code.CodeRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CodeViewModel extends AndroidViewModel {
@@ -23,7 +20,7 @@ public class CodeViewModel extends AndroidViewModel {
     //tabs select position
     public final MutableLiveData<Integer> tabSelect=new MutableLiveData<>();
 
-    CodeRepository codeRepository;
+   private CodeRepository codeRepository;
 
 
 
@@ -32,24 +29,8 @@ public class CodeViewModel extends AndroidViewModel {
         tabSelect.setValue(0);
         keyWord.setValue("");
         listCodes.setValue(null);
-        codeRepository=CodeRepository.getCodeRepository();
-       // addCode();
+       codeRepository=CodeRepository.getCodeRepository(application);
     }
-
-
-    void addCode(){
-        Code code=new Code();
-        code.setCodeName("0000");
-        code.setAnalysis("正常");
-        code.setAnalysis("not analysis");
-        code.setDeviceType("YH");
-
-        codeRepository.addCode(code);
-    }
-
-
-
-
 
 
     //获取数据
@@ -61,18 +42,18 @@ public class CodeViewModel extends AndroidViewModel {
     public void generateData(String string, int num) {
 //        Log.d("TAG_LOG", "--vm-generateData----"+string+" "+num);
         String[] types={"YH","HCM"};
-        List<Code> codes = null;
+     LiveData<List<Code>> codes = null;
         switch (num) {
             case 0:
                 try {
-                    codes=codeRepository.getAllCode();//codeRepository.getCodeWithNameAndType(types[num],string);
+                    codes=codeRepository.getAllCodes();//codeRepository.getCodeWithNameAndType(types[num],string);
                     Log.d("TAG_LOG", "--codeViewModel-generateData----"+codes.toString());
                 }catch (Exception e){
                      Log.d("TAG_LOG", "--codeViewModel-generateData Error---"+e.toString());
                 }
 
                // Log.d("TAG_LOG", "--vm-generateData----"+codeRepository.getAllCode());
-               listCodes.setValue(codes);
+               listCodes.setValue(codes.getValue());
                 break;
             case 1:
 

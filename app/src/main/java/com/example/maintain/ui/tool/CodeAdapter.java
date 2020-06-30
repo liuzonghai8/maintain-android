@@ -14,7 +14,7 @@ import com.example.maintain.data.code.Code;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CodeAdapter extends RecyclerView.Adapter<CodeAdapter.MyHolder> {
+public class CodeAdapter extends RecyclerView.Adapter<CodeAdapter.CodeItemHolder> {
 
     List<Code> allCodes = new ArrayList<>();
 
@@ -31,11 +31,11 @@ public class CodeAdapter extends RecyclerView.Adapter<CodeAdapter.MyHolder> {
      */
     @NonNull
     @Override
-    public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CodeItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
         //使用哪个页面layout
         View viewItem =layoutInflater.inflate(R.layout.cell_code_card,parent,false);
-        return new MyHolder(viewItem);
+        return new CodeItemHolder(viewItem);
     }
 
     /**
@@ -44,7 +44,7 @@ public class CodeAdapter extends RecyclerView.Adapter<CodeAdapter.MyHolder> {
      *     This is called by the RecyclerView, for example, when a new View item scrolls onto the screen.
      */
      @Override
-    public void onBindViewHolder(@NonNull MyHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CodeItemHolder holder, int position) {
         Code code = allCodes.get(position);
         holder.textViewId.setText(String.valueOf(position));
         holder.textViewCode.setText("故障码: "+code.getCodeName());
@@ -53,6 +53,7 @@ public class CodeAdapter extends RecyclerView.Adapter<CodeAdapter.MyHolder> {
     }
 
     /**
+     * 返回数量
      *  returns the total number of items in the data set held by the adapter.
      */
     @Override
@@ -60,10 +61,10 @@ public class CodeAdapter extends RecyclerView.Adapter<CodeAdapter.MyHolder> {
         return allCodes!=null?allCodes.size():0;
     }
 
-    class MyHolder extends RecyclerView.ViewHolder {
+  static  class CodeItemHolder extends RecyclerView.ViewHolder {
 
         TextView textViewId, textViewCode, textViewAnalysis, textViewAdvise;
-        public MyHolder(@NonNull View itemView) {
+        public CodeItemHolder(@NonNull View itemView) {
             super(itemView);
             textViewId = itemView.findViewById(R.id.text_id);
             textViewCode = itemView.findViewById(R.id.text_code);

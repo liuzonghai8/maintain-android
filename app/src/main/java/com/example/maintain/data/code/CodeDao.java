@@ -1,5 +1,6 @@
 package com.example.maintain.data.code;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -18,14 +19,16 @@ public interface CodeDao  {
 
     @Delete
     void deleteCode(Code ...codes);
+    @Query("DELETE FROM t_code")
+    public void deleteAll();
 
     //查询所有，按名排序
-    @Query("SELECT * FROM code ORDER BY code_name ")
-   public List<Code> loadAllCode();
+    @Query("SELECT * FROM t_code ")
+   public LiveData<List<Code>> loadAllCode();
 
-    @Query("SELECT * FROM code WHERE code_name LIKE :search ORDER BY code_name")
+    @Query("SELECT * FROM t_code WHERE code_name LIKE :search ORDER BY code_name")
     List<Code> findCodeWithName(String search);
 
-   @Query("SELECT * FROM code WHERE device_type = :type AND code_name LIKE :search ORDER BY code_name")
+   @Query("SELECT * FROM t_code WHERE device_type = :type AND code_name LIKE :search ORDER BY code_name")
  public   List<Code> findCodeWithNameAndType(String type,String search);
 }
