@@ -22,6 +22,9 @@ public class CodeViewModel extends AndroidViewModel {
 
    private CodeRepository codeRepository;
 
+    public LiveData<List<Code>> getAllCodes() {
+        return codeRepository.getAllCodes();
+    }
 
 
     public CodeViewModel(@NonNull Application application) {
@@ -65,5 +68,6 @@ public class CodeViewModel extends AndroidViewModel {
                 break;
         }
     }
+
 
 }

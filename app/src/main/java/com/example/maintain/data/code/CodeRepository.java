@@ -33,10 +33,12 @@ public class CodeRepository {
         return allCodes;
     }
 
+    //添加
     public void addCode(Code...codes){
         new InsertAsyncTask(codeDao).execute(codes);
     }
 
+    //删除
    public void deleteAllCode(){
         new DeleteAllAsyncTask(codeDao).execute();
     }

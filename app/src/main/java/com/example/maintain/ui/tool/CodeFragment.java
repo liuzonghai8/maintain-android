@@ -82,15 +82,7 @@ public class CodeFragment extends BasicFragment {
                model.keyWord.setValue("");
             }
         });
-
-        //keyword 监控
-        subKeyChangeUi();
-        //列表数据的监控
-        subDataChangeUi();
-
-    }
-
-    private void subDataChangeUi(){
+        //数据变化
         model.listCodes.observe(getViewLifecycleOwner(), new Observer<List<Code>>() {
             @Override
             public void onChanged(List<Code> codes) {
@@ -99,9 +91,7 @@ public class CodeFragment extends BasicFragment {
                 codeAdapter.notifyDataSetChanged();
             }
         });
-    }
-
-    private void subKeyChangeUi(){
+        // 输入变化
         model.keyWord.observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -112,5 +102,8 @@ public class CodeFragment extends BasicFragment {
             }
         });
 
+
     }
+
+
 }

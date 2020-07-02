@@ -28,12 +28,18 @@ public interface CodeDao  {
     public void deleteAll();
 
     //查询所有，按名排序
-    @Query("SELECT * FROM t_code ")
+    @Query("SELECT * FROM t_code ORDER BY code_name ")
    public LiveData<List<Code>> loadAllCode();
 
     @Query("SELECT * FROM t_code WHERE code_name LIKE :search ORDER BY code_name")
     List<Code> findCodeWithName(String search);
 
+    /**
+     * 根据 型号、和关键字搜索
+     * @param type
+     * @param search
+     * @return
+     */
    @Query("SELECT * FROM t_code WHERE device_type = :type AND code_name LIKE :search ORDER BY code_name")
- public   List<Code> findCodeWithNameAndType(String type,String search);
+   public  List<Code> findCodeWithNameAndType(String type,String search);
 }
