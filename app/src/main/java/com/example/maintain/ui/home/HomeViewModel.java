@@ -29,6 +29,10 @@ public class HomeViewModel extends AndroidViewModel {
         return codeRepository.getAllCodes();
     }
 
+//    public LiveData<List<Code>> getSearchCodes(String type,String search) {
+//        return codeRepository.getSearchCodes(type,search);
+//    }
+
     void addCode(Code...codes){
         codeRepository.addCode(codes);
     }

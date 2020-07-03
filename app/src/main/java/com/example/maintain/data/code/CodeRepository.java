@@ -2,6 +2,7 @@ package com.example.maintain.data.code;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -13,12 +14,15 @@ public class CodeRepository {
     private static CodeDao codeDao;
     private static  CodeRepository codeRepository=null;
     private LiveData<List<Code>> allCodes;
+    //查询的数据
+    private LiveData<List<Code>> searchCodes; //= codeDao.findCodeWithNameAndType("YH6040W","");
 
     //构造函数
     private CodeRepository(Context context) {
         AppDatabase database= AppDatabase.getDatabase(context.getApplicationContext());
         codeDao=database.getCodeDao();
-        allCodes=codeDao.loadAllCode();
+        allCodes=codeDao.findCodeWithName("0%");//codeDao.loadAllCode();
+       // searchCodes=codeDao.findCodeWithNameAndType("","0000");
     }
 
     //单例模式
@@ -29,9 +33,19 @@ public class CodeRepository {
         return codeRepository;
     }
 
+    //获取全部
     public LiveData<List<Code>> getAllCodes() {
         return allCodes;
     }
+
+    //根据关键字查询
+    public List<Code> getSearchCodes(String type,String search){
+        //codeDao.findCodeWithNameAndType(type,search+"%");
+       new QueryAsyncTask(codeDao).execute(type, search);
+        return null;
+
+    }
+
 
     //添加
     public void addCode(Code...codes){
@@ -43,8 +57,22 @@ public class CodeRepository {
         new DeleteAllAsyncTask(codeDao).execute();
     }
 
+//    //查询线程
+    static class QueryAsyncTask extends AsyncTask<String,Void,List<Code>> {
+        private  CodeDao codeDao;
+        public QueryAsyncTask(CodeDao codeDao) {
+            this.codeDao = codeDao;
+        }
+        @Override
+        protected List<Code> doInBackground(String... strings) {
+            return codeDao.findCodeWithNameAndType(strings[0],strings[1]);
+        }
+    }
 
-    //添加
+
+
+
+    //添加线程
     static class InsertAsyncTask extends AsyncTask<Code,Void,Void> {
         private  CodeDao codeDao;
 
@@ -58,7 +86,7 @@ public class CodeRepository {
             return null;
         }
     }
-    //删除
+    //删除线程
     static class DeleteAllAsyncTask extends AsyncTask<Void,Void,Void>{
         private  CodeDao codeDao;
         public DeleteAllAsyncTask(CodeDao codeDao) {

@@ -25,7 +25,7 @@ public abstract class AppDatabase extends RoomDatabase {
      public static synchronized AppDatabase getDatabase(final Context context){
           if (INSTANCE==null){
                INSTANCE= Room.databaseBuilder(context.getApplicationContext(),AppDatabase.class,"maintain_database")
-                      //.allowMainThreadQueries() //主线程
+                      .allowMainThreadQueries() //主线程
                         //.fallbackToDestructiveMigration()//删除原来的，覆盖
                        //预加载数据
                        .addCallback(new Callback() {

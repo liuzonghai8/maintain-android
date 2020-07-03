@@ -40,8 +40,6 @@ public class CodeFragment extends BasicFragment {
             @Override
             public void onFragmentResult(@NonNull String key, @NonNull Bundle bundle) {
                 // We use a String here, but any type that can be put in a Bundle is supported
-                //    result = bundle.getString("bundleKey");
-//                args=bundle;
                 int tab_select_tool = bundle.getInt("TAB_SELECT_Tool");
 //                tabSelect = tab_select_tool;
                 // Do something with the result...
@@ -82,23 +80,18 @@ public class CodeFragment extends BasicFragment {
                model.keyWord.setValue("");
             }
         });
-        //数据变化
-        model.listCodes.observe(getViewLifecycleOwner(), new Observer<List<Code>>() {
-            @Override
-            public void onChanged(List<Code> codes) {
-                //设置数据
-                codeAdapter.setAllCodes(model.listCodes.getValue());
-                codeAdapter.notifyDataSetChanged();
-            }
-        });
-        // 输入变化
+
+
+//        // 输入变化
         model.keyWord.observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                Log.d(TAG_LOG,"---CodeFragment--model.getKeyWord().observe key-----"+s);
-                Log.d(TAG_LOG,"---CodeFragment--model.getKeyWord().observe -----"+model.tabSelect.getValue());
                 //根据关键字查找数据
-                model.generateData(s,model.tabSelect.getValue());
+                Log.d(TAG_LOG,"---CodeFragment   model.keyWord.observe--输入变化更新数据--");
+                //设置数据
+                codeAdapter.setAllCodes(model.getAllCodes());
+                codeAdapter.notifyDataSetChanged();
+                Log.d(TAG_LOG,"---CodeFragment  model.getAllCodes().observe--数据变化更新视图--");
             }
         });
 
