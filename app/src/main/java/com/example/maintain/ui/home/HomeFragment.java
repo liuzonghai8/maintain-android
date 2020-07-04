@@ -77,19 +77,7 @@ public class HomeFragment extends Fragment {
 
 
 
-         butAdd.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 Code code = new Code();
-                 code.setCodeName("0000");
-                 code.setAnalysis("正常");
-                 code.setAdvise("not analysis");
-                 code.setDeviceType("YH");
-//                 codeDao.saveCode(code);
-                 //new InsertAsyncTask(codeDao).execute(code);
-                 mViewModel.addCode(code);
-             }
-         });
+
 
          butClear.setOnClickListener(new View.OnClickListener() {
              @Override

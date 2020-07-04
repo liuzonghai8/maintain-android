@@ -23,7 +23,6 @@ public class CodeViewModel extends AndroidViewModel {
     public LiveData<List<Code>> searchCodes=new MutableLiveData<>();
 
    private CodeRepository codeRepository;
-  private   String[] types={"YH6040W","NDT3260","ATM&CRS响应码","ITM响应码"};
 
 
 
@@ -36,8 +35,8 @@ public class CodeViewModel extends AndroidViewModel {
     }
 
     public List<Code> getAllCodes() {
-        Log.d("TAG_LOG", "--CodeViewModel-getAllCodes---tab:-"+types[tabSelect.getValue()]+" keyword: "+keyWord.getValue());
-        return codeRepository.getSearchCodes(types[tabSelect.getValue()],keyWord.getValue());
+        Log.d("TAG_LOG", "--CodeViewModel-getAllCodes---tab:-"+tabSelect.getValue()+" keyword: "+keyWord.getValue());
+        return codeRepository.getSearchCodes(String.valueOf(tabSelect.getValue()),keyWord.getValue());
     }
 
 

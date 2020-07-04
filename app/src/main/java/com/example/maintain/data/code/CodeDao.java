@@ -41,5 +41,5 @@ public interface CodeDao  {
      * @return
      */
    @Query("SELECT * FROM t_code WHERE device_type = :type AND code_name LIKE :search ")
-   public List<Code> findCodeWithNameAndType(String type,String search);
+   public List<Code> findCodeWithNameAndType(Integer type,String search);
 }

@@ -40,12 +40,14 @@ public class CodeRepository {
     }
 
     //根据关键字查询
-    public List<Code> getSearchCodes(String type,String search){
+    public List<Code> getSearchCodes(String type, String search){
         if (TextUtils.isEmpty(search)){
             return null;
         }
        try {
-           return new QueryAsyncTask(codeDao).execute(type, search+"%").get();
+           List<Code> codes = new QueryAsyncTask(codeDao).execute(type, search + "%").get();
+           Log.d("TAG_LOG","---getSearchCodes   --获取的数据--"+codes);
+           return codes;
        }catch (Exception e){
            e.printStackTrace();
            return null;
@@ -73,7 +75,7 @@ public class CodeRepository {
         @Override
         protected List<Code> doInBackground(String... strings) {
             Log.d("TAG_LOG","===doInBackground======type:==="+strings[0]+"+++search+++"+strings[1]);
-            return codeDao.findCodeWithNameAndType(strings[0],strings[1]);
+            return codeDao.findCodeWithNameAndType(Integer.valueOf(strings[0]),strings[1]);
         }
     }
 
