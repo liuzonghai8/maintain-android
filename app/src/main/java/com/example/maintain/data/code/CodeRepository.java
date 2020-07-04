@@ -2,6 +2,7 @@ package com.example.maintain.data.code;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -40,9 +41,15 @@ public class CodeRepository {
 
     //根据关键字查询
     public List<Code> getSearchCodes(String type,String search){
-        //codeDao.findCodeWithNameAndType(type,search+"%");
-       new QueryAsyncTask(codeDao).execute(type, search);
-        return null;
+        if (TextUtils.isEmpty(search)){
+            return null;
+        }
+       try {
+           return new QueryAsyncTask(codeDao).execute(type, search+"%").get();
+       }catch (Exception e){
+           e.printStackTrace();
+           return null;
+       }
 
     }
 
@@ -65,6 +72,7 @@ public class CodeRepository {
         }
         @Override
         protected List<Code> doInBackground(String... strings) {
+            Log.d("TAG_LOG","===doInBackground======type:==="+strings[0]+"+++search+++"+strings[1]);
             return codeDao.findCodeWithNameAndType(strings[0],strings[1]);
         }
     }
