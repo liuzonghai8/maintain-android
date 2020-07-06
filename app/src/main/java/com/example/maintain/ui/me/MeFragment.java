@@ -31,12 +31,10 @@ public class MeFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_me, container, false);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(MeViewModel.class);
-        // TODO: Use the ViewModel
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         Button button = getActivity().findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -47,5 +45,4 @@ public class MeFragment extends Fragment {
             }
         });
     }
-
 }

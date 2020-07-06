@@ -39,33 +39,33 @@ public class SplashFragment extends BasicFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final NavController navController = Navigation.findNavController(view);
-        model= new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
-        model.authenticationState.observe(getViewLifecycleOwner(),
-                new Observer<LoginViewModel.AuthenticationState>() {
-                    @Override
-                    public void onChanged(final LoginViewModel.AuthenticationState authenticationState) {
-                        //停留3秒进入登陆界面
-                        ThreadUtils.runInThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                //停留3秒
-                                SystemClock.sleep(3000);
-                                switch (authenticationState) {
-                                    case AUTHENTICATED:
-                                        navController.navigate(R.id.main_Fragment);
-                                        Log.d(TAG_LOG,"-----main fragment----");
-                                        break;
-                                    case UNAUTHENTICATED:
-                                        navController.navigate(R.id.login_Fragment);
-                                        break;
-                                }
-
-                            }
-                        });
-
-                    }
-                });
+//        final NavController navController = Navigation.findNavController(view);
+//        model= new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
+//        model.authenticationState.observe(getViewLifecycleOwner(),
+//                new Observer<LoginViewModel.AuthenticationState>() {
+//                    @Override
+//                    public void onChanged(final LoginViewModel.AuthenticationState authenticationState) {
+//                        //停留3秒进入登陆界面
+//                        ThreadUtils.runInThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                //停留3秒
+//                                SystemClock.sleep(3000);
+//                                switch (authenticationState) {
+//                                    case AUTHENTICATED:
+//                                        navController.navigate(R.id.main_Fragment);
+//                                        Log.d(TAG_LOG,"-----main fragment----");
+//                                        break;
+//                                    case UNAUTHENTICATED:
+//                                        navController.navigate(R.id.login_Fragment);
+//                                        break;
+//                                }
+//
+//                            }
+//                        });
+//
+//                    }
+//                });
 
     }
 }
