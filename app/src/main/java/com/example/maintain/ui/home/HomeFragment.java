@@ -26,10 +26,6 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel mViewModel;
-    Button butAdd,butClear;
-    TextView textCode;
-
     public static HomeFragment newInstance() {
         return new HomeFragment();
     }
@@ -44,50 +40,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-       mViewModel =new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
-        butAdd=view.findViewById(R.id.but_add);
-        butClear=view.findViewById(R.id.but_clear);
-        textCode =view.findViewById(R.id.text_code);
-
-        //观察
-//       mViewModel.getAllCodes().observe(getViewLifecycleOwner(), new Observer<List<Code>>() {
-//            @Override
-//            public void onChanged(List<Code> codes) {
-//                StringBuilder str= new StringBuilder();
-//                for (int i=0;i<codes.size();i++){
-//                    Code code =codes.get(i);
-//                    str.append(" name: ").append(code.getCodeName()).append(" advise ").append(code.getAnalysis()).append("  ").append("\n");
-//                }
-//                textCode.setText(str);
-//            }
-//        });
-
-//       mViewModel.getSearchCodes("YH6040W","0"+"%").observe(getViewLifecycleOwner(), new Observer<List<Code>>() {
-//           @Override
-//           public void onChanged(List<Code> codes) {
-//               StringBuilder str= new StringBuilder();
-//               for (int i=0;i<codes.size();i++){
-//                   Code code =codes.get(i);
-//                   str.append(" name: ").append(code.getCodeName()).append(" advise ").append(code.getAnalysis()).append("  ").append("\n");
-//               }
-//               textCode.setText(str);
-//           }
-//       });
-
-
-
-
-
-         butClear.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-//                 codeDao.deleteAll();
-                // new DeleteAllAsyncTask(codeDao).execute();
-                 mViewModel.deleteAllCode();
-             }
-         });
-
 
 
     }

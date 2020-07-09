@@ -8,7 +8,7 @@
     tools:context=".ui.MainFragment" >
 
     <fragment
-        android:id="@+id/nav_host_fragment"
+        android:id="@+id/nav_bottomView"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -28,7 +28,7 @@
         android:background="#FFFFFF"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/nav_host_fragment"
+        app:layout_constraintEnd_toEndOf="@+id/nav_bottomView"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu" />

@@ -40,8 +40,8 @@ public class MeFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavController navController = Navigation.findNavController(v);
-                navController.navigate(R.id.action_navigation_me_to_aboutFragment);
+                NavController navController = Navigation.findNavController(requireActivity(),R.id.nav_main);
+                navController.navigate(R.id.action_main_Fragment_to_aboutFragment2);
             }
         });
     }

@@ -17,29 +17,12 @@ import java.util.List;
 
 public class HomeViewModel extends AndroidViewModel {
     // TODO: Implement the ViewModel
-    CodeRepository codeRepository;
-//  LiveData<List<Code>> allCodes;
 
     public HomeViewModel(@NonNull Application application) {
         super(application);
-        codeRepository=CodeRepository.getCodeRepository(application);
     }
 
-    public LiveData<List<Code>> getAllCodes() {
-        return codeRepository.getAllCodes();
-    }
 
-//    public LiveData<List<Code>> getSearchCodes(String type,String search) {
-//        return codeRepository.getSearchCodes(type,search);
-//    }
-
-    void addCode(Code...codes){
-        codeRepository.addCode(codes);
-    }
-
-    void deleteAllCode(){
-        codeRepository.deleteAllCode();
-    }
 
 
 

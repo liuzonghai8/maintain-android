@@ -1,17 +1,13 @@
 package com.example.maintain.ui;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.NavController;
-import androidx.navigation.NavGraph;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
@@ -41,15 +37,15 @@ public class MainFragment extends BasicFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final NavController navController1 = Navigation.findNavController(view);
-        final NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
-        Log.d("TAG_LOG","=======MainFragment==onViewCreated==="+navController.toString());
-        Log.d("TAG_LOG","=======MainFragment==onViewCreated==="+navController1.toString());
-        NavGraph navGraph =navController1.getGraph();
-        Log.d("TAG_LOG","=======MainFragment==onViewCreated=navGraph="+navGraph.toString());
+
+
+        final NavController bottomNavController = Navigation.findNavController(requireActivity(),R.id.nav_bottomView);
         BottomNavigationView navView = view.findViewById(R.id.bottom_nav);
-        NavigationUI.setupWithNavController(navView, navController);
+        NavigationUI.setupWithNavController(navView, bottomNavController);
+        //绑定model
         LoginViewModel model= new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
+        //主导航
+        final NavController mainNavController = Navigation.findNavController(requireActivity(),R.id.nav_main);
         model.authenticationState.observe(getViewLifecycleOwner(),
                 new Observer<LoginViewModel.AuthenticationState>() {
                     @Override
@@ -62,7 +58,7 @@ public class MainFragment extends BasicFragment {
                                         Log.d(TAG_LOG,"-----main fragment----");
                                         break;
                                     case UNAUTHENTICATED:
-                                        navController1.navigate(R.id.login_Fragment);
+                                        mainNavController.navigate(R.id.login_Fragment);
                                         break;
                                 }
 

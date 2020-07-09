@@ -13,9 +13,6 @@
         <action
             android:id="@+id/action_main_Fragment_to_aboutFragment2"
             app:destination="@id/aboutFragment2" />
-        <action
-            android:id="@+id/action_main_Fragment_to_bottom_navigation"
-            app:destination="@id/bottom_navigation" />
     </fragment>
     <fragment
         android:id="@+id/login_Fragment"
@@ -36,5 +33,4 @@
         android:name="com.example.maintain.ui.me.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
-    <include app:graph="@navigation/bottom_navigation" />
 </navigation>

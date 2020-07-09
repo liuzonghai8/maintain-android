@@ -35,8 +35,8 @@ public class LoginViewModel extends AndroidViewModel {
     public LoginViewModel(@NonNull Application application) {
         super(application);
         // In this example, the user is always unauthenticated when MainActivity is launched
-        authenticationState.setValue(AuthenticationState.UNAUTHENTICATED);
-//        authenticationState.setValue(AuthenticationState.AUTHENTICATED);
+//        authenticationState.setValue(AuthenticationState.UNAUTHENTICATED);
+        authenticationState.setValue(AuthenticationState.AUTHENTICATED);
         username.setValue("");
         valid.setValue(true);
     }
