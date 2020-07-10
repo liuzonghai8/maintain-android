@@ -72,6 +72,7 @@ class MeAdapter extends RecyclerView.Adapter<MeAdapter.MeItemHolder> {
 
     //内部类
     static  class MeItemHolder extends RecyclerView.ViewHolder {
+
         ImageView imageView;
         TextView textTitle;
         public MeItemHolder(@NonNull View itemView) {
