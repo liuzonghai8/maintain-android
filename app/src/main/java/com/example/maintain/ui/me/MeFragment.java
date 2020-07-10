@@ -1,48 +1,54 @@
 package com.example.maintain.ui.me;
 
-import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.example.maintain.R;
+
+import com.example.maintain.databinding.FragmentMeBinding;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MeFragment extends Fragment {
 
-    private MeViewModel mViewModel;
+    private FragmentMeBinding binding;
 
-    public static MeFragment newInstance() {
-        return new MeFragment();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_me, container, false);
+        binding=FragmentMeBinding.inflate(inflater,container,false);
+        binding.setLifecycleOwner(this);
+        return  binding.getRoot();
     }
 
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button button = getActivity().findViewById(R.id.button);
+        MeAdapter meAdapter=new MeAdapter();
+        binding.recyclerMe.setLayoutManager(new LinearLayoutManager(requireContext()));
+        binding.recyclerMe.setAdapter(meAdapter);
+        List<Me> meList=new ArrayList<>();
+        String[] arr={"意见反馈","设置","key"};
+        String[] imageArr={"ic_message_24","ic_settings_24","ic_key_24"};
+        for(int i=0;i<3;i++){
+            Me me = new Me();
+            me.setTitle(arr[i]);
+            me.setImage(imageArr[i]);
+            meList.add(me);
+        }
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController navController = Navigation.findNavController(requireActivity(),R.id.nav_main);
-                navController.navigate(R.id.action_main_Fragment_to_aboutFragment2);
-            }
-        });
+        meAdapter.setAllMes(meList);
+        meAdapter.notifyDataSetChanged();
     }
 }

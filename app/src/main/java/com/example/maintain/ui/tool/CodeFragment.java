@@ -70,7 +70,6 @@ public class CodeFragment extends BasicFragment {
 //        codeAdapter.setAllCodes(model.listCodes());
         //有变更时更新数据
 
-        final Integer num = 0;
 
         //codeAdapter.notifyDataSetChanged();
         //监听父Fragment tab select changed

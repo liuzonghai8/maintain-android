@@ -1,5 +1,6 @@
 package com.example.maintain.ui;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.util.Log;
@@ -22,11 +24,6 @@ import com.example.maintain.ui.login.LoginViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainFragment extends BasicFragment {
-    private LoginViewModel loginViewModel;
-
-    public static MainFragment newInstance() {
-        return new MainFragment();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -40,8 +37,11 @@ public class MainFragment extends BasicFragment {
 
 
         final NavController bottomNavController = Navigation.findNavController(requireActivity(),R.id.nav_bottomView);
+//        AppBarConfiguration configuration=new AppBarConfiguration.Builder(bottomNavController.getGraph()).build();
+//        NavigationUI.setupActionBarWithNavController(,bottomNavController,configuration);
         BottomNavigationView navView = view.findViewById(R.id.bottom_nav);
         NavigationUI.setupWithNavController(navView, bottomNavController);
+
         //绑定model
         LoginViewModel model= new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
         //主导航
@@ -58,7 +58,7 @@ public class MainFragment extends BasicFragment {
                                         Log.d(TAG_LOG,"-----main fragment----");
                                         break;
                                     case UNAUTHENTICATED:
-                                        mainNavController.navigate(R.id.login_Fragment);
+                                        mainNavController.navigate(R.id.login_fragment);
                                         break;
                                 }
 
