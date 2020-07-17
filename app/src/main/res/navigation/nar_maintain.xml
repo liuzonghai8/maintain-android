@@ -9,11 +9,7 @@
         android:id="@+id/main_fragment"
         android:name="com.example.maintain.ui.MainFragment"
         android:label="fragment_main_page"
-        tools:layout="@layout/fragment_main" >
-        <action
-            android:id="@+id/action_main_Fragment_to_aboutFragment2"
-            app:destination="@id/about_fragment" />
-    </fragment>
+        tools:layout="@layout/fragment_main" />
     <fragment
         android:id="@+id/login_fragment"
         android:name="com.example.maintain.ui.login.LoginFragment"
@@ -28,9 +24,4 @@
         android:name="com.example.maintain.ui.login.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
-    <fragment
-        android:id="@+id/about_fragment"
-        android:name="com.example.maintain.ui.me.AboutFragment"
-        android:label="fragment_about"
-        tools:layout="@layout/fragment_about" />
 </navigation>

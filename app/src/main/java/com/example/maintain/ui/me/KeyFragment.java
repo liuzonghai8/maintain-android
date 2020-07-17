@@ -1,4 +1,4 @@
-package com.example.maintain.ui.learn;
+package com.example.maintain.ui.me;
 
 import androidx.lifecycle.ViewModelProviders;
 
@@ -14,20 +14,18 @@ import android.view.ViewGroup;
 
 import com.example.maintain.R;
 
-public class LearnFragment extends Fragment {
+public class KeyFragment extends Fragment {
 
-    private LearnViewModel mViewModel;
+    private KeyViewModel mViewModel;
 
-    public static LearnFragment newInstance() {
-        return new LearnFragment();
+    public static KeyFragment newInstance() {
+        return new KeyFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_learn, container, false);
+        return inflater.inflate(R.layout.fragment_key, container, false);
     }
-
-
 
 }

@@ -14,7 +14,20 @@
         android:id="@+id/navigation_me"
         android:name="com.example.maintain.ui.me.MeFragment"
         android:label="@string/title_me"
-        tools:layout="@layout/fragment_me" />
+        tools:layout="@layout/fragment_me" >
+        <action
+            android:id="@+id/action_navigation_me_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_navigation_me_to_settingFragment"
+            app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_navigation_me_to_feedBackFragment"
+            app:destination="@id/feedBackFragment" />
+        <action
+            android:id="@+id/action_navigation_me_to_keyFragment"
+            app:destination="@id/keyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_tool"
         android:name="com.example.maintain.ui.tool.ToolFragment"
@@ -25,4 +38,24 @@
         android:name="com.example.maintain.ui.learn.LearnFragment"
         android:label="@string/title_learn"
         tools:layout="@layout/fragment_learn" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.maintain.ui.me.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/feedBackFragment"
+        android:name="com.example.maintain.ui.me.FeedBackFragment"
+        android:label="fragment_feed_back"
+        tools:layout="@layout/fragment_feed_back" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.maintain.ui.me.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/keyFragment"
+        android:name="com.example.maintain.ui.me.KeyFragment"
+        android:label="fragment_key"
+        tools:layout="@layout/fragment_key" />
 </navigation>

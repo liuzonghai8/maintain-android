@@ -1,8 +1,6 @@
 package com.example.maintain.ui.me;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.res.Resources;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,19 +10,27 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.maintain.R;
-import com.example.maintain.ui.tool.CodeAdapter;
+import com.example.maintain.databinding.CellMeBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+//RecyclerView.Adapter<MeAdapter.MeItemHolder>
+//<MeAdapter.MeItemHolder>?
+class MeAdapter extends RecyclerView.Adapter<MeAdapter.MeItemHolder>  {
 
-
-class MeAdapter extends RecyclerView.Adapter<MeAdapter.MeItemHolder> {
+//class MeAdapter extends ListAdapter<Me,MeAdapter.MeItemHolder> {
     List<Me> allMes = new ArrayList<>();
+//
+//    protected MeAdapter(@NonNull DiffUtil.ItemCallback<Me> diffCallback) {
+//        super(diffCallback);
+//    }
 
     public void setAllMes(List<Me> allMes) {
         this.allMes = allMes;
@@ -32,8 +38,9 @@ class MeAdapter extends RecyclerView.Adapter<MeAdapter.MeItemHolder> {
 
     @NonNull
     @Override
-    public MeItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MeAdapter.MeItemHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
+
         //使用哪个页面layout
         View viewItem =layoutInflater.inflate(R.layout.cell_me,parent,false);
         return new MeAdapter.MeItemHolder(viewItem);
@@ -41,8 +48,8 @@ class MeAdapter extends RecyclerView.Adapter<MeAdapter.MeItemHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MeItemHolder holder, int position) {
-     // 绑定页面UI
+    public void onBindViewHolder(@NonNull final MeAdapter.MeItemHolder holder, final int position) {
+        // 绑定页面UI
         Me me = allMes.get(position);
         Context context = holder.itemView.getContext();
         if(me!=null){
@@ -54,15 +61,26 @@ class MeAdapter extends RecyclerView.Adapter<MeAdapter.MeItemHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("TAG_LOG","=====onClick======"+v.toString());
                 //主导航
-//                 NavController mainNavController = Navigation.findNavController(,R.id.nav_main);
+                NavController mainNavController = Navigation.findNavController(v);
+                Log.d("TAG_LOG","++++=====position==========="+position);
+                switch (position){
+                    case 0:
+                        mainNavController.navigate(R.id.action_navigation_me_to_feedBackFragment);
+                        break;
+                    case 1:
+                        mainNavController.navigate(R.id.action_navigation_me_to_settingFragment);
+                        break;
+                    case 2:
+                        mainNavController.navigate(R.id.action_navigation_me_to_keyFragment);
+                        break;
+                    default:
+                        break;
+                }
+
 
             }
         });
-
-
-
     }
 
     @Override
@@ -72,6 +90,7 @@ class MeAdapter extends RecyclerView.Adapter<MeAdapter.MeItemHolder> {
 
     //内部类
     static  class MeItemHolder extends RecyclerView.ViewHolder {
+        private CellMeBinding cellMeBinding;
 
         ImageView imageView;
         TextView textTitle;

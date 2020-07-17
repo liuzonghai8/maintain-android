@@ -50,5 +50,7 @@ public class MeFragment extends Fragment {
 
         meAdapter.setAllMes(meList);
         meAdapter.notifyDataSetChanged();
+
+
     }
 }
