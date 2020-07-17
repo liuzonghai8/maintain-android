@@ -81,6 +81,7 @@ public class LoginFragment extends BasicFragment {
                 navController.navigate(R.id.action_login_Fragment_to_register_fragment);
             }
         });
+        //监听用户名变化
         viewModel.username.observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable final String str) {
