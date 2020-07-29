@@ -53,4 +53,11 @@ public class SharedData {
         String fileName =context.getString(R.string.shared_file_name);
         return load(fileName, keyName);
     }
+    //获取用户名
+    public String loadUserName(){
+        String user = context.getString(R.string.login_user_name);
+        //file
+        String fileName =context.getString(R.string.shared_file_name);
+        return load(fileName,user);
+    }
 }

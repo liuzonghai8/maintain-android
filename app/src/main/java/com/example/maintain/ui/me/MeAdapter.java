@@ -62,8 +62,8 @@ class MeAdapter extends RecyclerView.Adapter<MeAdapter.MeItemHolder>  {
             @Override
             public void onClick(View v) {
                 //主导航
-                NavController mainNavController = Navigation.findNavController(v);
-                Log.d("TAG_LOG","++++=====position==========="+position);
+               final NavController mainNavController = Navigation.findNavController(v);
+//                Log.d("TAG_LOG","++++=====position==========="+position);
                 switch (position){
                     case 0:
                         mainNavController.navigate(R.id.action_navigation_me_to_feedBackFragment);

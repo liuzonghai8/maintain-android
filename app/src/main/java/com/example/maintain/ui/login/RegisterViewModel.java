@@ -1,6 +1,7 @@
 package com.example.maintain.ui.login;
 
 import android.app.Application;
+import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -20,7 +21,7 @@ public class RegisterViewModel extends AndroidViewModel {
         super(application);
         userKey.setValue("");
         String result = sharedData.loadKey();
-        if (result == "" || result == null) {
+        if (TextUtils.isEmpty(result)) {
             // Log.d("TAG_LOG", "---getFlag--- getkey---:" + getKey().toString());
             flag.setValue(true);
             // Log.d("TAG_LOG", "---getFlag--- getkey---false-");
@@ -44,25 +45,7 @@ public class RegisterViewModel extends AndroidViewModel {
         }
     }
 
-//    public MutableLiveData<Boolean> getFlag() {
-//        if (flag==null){
-//            flag=new MutableLiveData<>();
-//            flag.setValue(false);
-//        }
-//        String result= sharedData.loadKey();
-//        if (result == "" || result== null) {
-//            // Log.d("TAG_LOG", "---getFlag--- getkey---:" + getKey().toString());
-//            flag.setValue(true);
-//            // Log.d("TAG_LOG", "---getFlag--- getkey---false-");
-//        }
-//        return flag;
-//    }
 
-//    public MutableLiveData<String> getUserKey() {
-//        if(userKey==null){
-//            userKey=new MutableLiveData<>();
-//            userKey.setValue("");
-//        }
-//        return userKey;
-//    }
+
+
 }

@@ -2,10 +2,8 @@ package com.example.maintain.ui.login;
 
 import android.app.Application;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
@@ -15,7 +13,6 @@ import com.example.maintain.utils.EncryptUtil;
 import com.example.maintain.utils.MobileInfoUtil;
 import com.example.maintain.utils.PhoneUtils;
 import com.example.maintain.utils.SharedData;
-import com.google.android.material.snackbar.Snackbar;
 
 public class LoginViewModel extends AndroidViewModel {
     public enum AuthenticationState {
@@ -62,7 +59,7 @@ public class LoginViewModel extends AndroidViewModel {
 
     //认证电话号码和存储的key是否正确
     private boolean keyIsValidForUsername() {
-        if (!DateUtil.compareDate(getApplication().getString(R.string.start_datte), getApplication().getString(R.string.end_date))) {
+        if (!DateUtil.compareDate(getApplication().getString(R.string.start_date), getApplication().getString(R.string.end_date))) {
             Log.d("TAG_LOG", "--------日期过期------");
             return false;
         }
@@ -79,7 +76,8 @@ public class LoginViewModel extends AndroidViewModel {
      //   String result = EncryptUtil.calculateKey(username.getValue(), device);
         //  Log.d("TAG_LOG","-----calculate key-----"+result+username.getValue());
 //        String key = sharedData.loadKey();
-        String s = EncryptUtil.calculateKey("18812345678", "fe4b1f218dfc9520");
+        String s = EncryptUtil.calculateKey("18978704599", "263ad18a19eba1dd");
+//        String s = EncryptUtil.calculateKey("18812345678", "84029d1a22714ce9");
         Log.d("TAG_LOG", "-----测试s.-----" + s);
         //比较两个可以
         return EncryptUtil.calculateKey(username.getValue(), device).equals(sharedData.loadKey());
@@ -88,7 +86,7 @@ public class LoginViewModel extends AndroidViewModel {
     //检查账号是否是电话号码
     public boolean checkPhone() {
         String user = username.getValue();
-        if (user.length() == 11 && PhoneUtils.checkChinaPhone(user)) {
+        if (user!=null&&user.length() == 11 && PhoneUtils.checkChinaPhone(user)) {
             valid.setValue(true);
             return true;
         }

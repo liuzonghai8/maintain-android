@@ -1,28 +1,38 @@
 package com.example.maintain.ui.me;
 
+import android.app.Application;
+import android.text.TextUtils;
+import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.maintain.utils.EncryptUtil;
+import com.example.maintain.utils.SharedData;
 
-public class KeyViewModel extends ViewModel {
-    public String xs="visible";
+public class KeyViewModel extends AndroidViewModel {
 
-    public final MutableLiveData<String> visible=new MutableLiveData<>();
-    public final MutableLiveData<String> inVisible=new MutableLiveData<>();
     public final MutableLiveData<String> phone=new MutableLiveData<>();
     public final MutableLiveData<String> deviceId=new MutableLiveData<>();
     public final MutableLiveData<String> key=new MutableLiveData<>();
     public final MutableLiveData<Boolean> valid = new MutableLiveData<>();
 
+    private final SharedData sharedData = new SharedData(getApplication().getApplicationContext());
 
-    public KeyViewModel() {
+    public KeyViewModel(@NonNull Application application) {
+        super(application);
         phone.setValue("");
         deviceId.setValue("");
         key.setValue("");
-        valid.setValue(false);
-        visible.setValue("visible");
-        inVisible.setValue("invisible");
+        if(sharedData.loadUserName().equals("18978704599")){
+            valid.setValue(true);
+        }else
+        {
+            valid.setValue(false);
+        }
+
+
     }
 
    public String compareKey(){
@@ -32,4 +42,7 @@ public class KeyViewModel extends ViewModel {
    public void myKey(){
        key.setValue(compareKey());
    }
+
+   //获取存储用户名（手机号）
+
 }

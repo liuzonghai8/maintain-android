@@ -17,16 +17,32 @@
         tools:layout="@layout/fragment_me" >
         <action
             android:id="@+id/action_navigation_me_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
+            app:destination="@id/aboutFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_navigation_me_to_settingFragment"
-            app:destination="@id/settingFragment" />
+            app:destination="@id/settingFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_navigation_me_to_feedBackFragment"
-            app:destination="@id/feedBackFragment" />
+            app:destination="@id/feedBackFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_navigation_me_to_keyFragment"
-            app:destination="@id/keyFragment" />
+            app:destination="@id/keyFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/navigation_tool"
@@ -37,7 +53,15 @@
         android:id="@+id/navigation_learn"
         android:name="com.example.maintain.ui.learn.LearnFragment"
         android:label="@string/title_learn"
-        tools:layout="@layout/fragment_learn" />
+        tools:layout="@layout/fragment_learn" >
+        <action
+            android:id="@+id/action_navigation_learn_to_commonProblemFragment"
+            app:destination="@id/commonProblemFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.example.maintain.ui.me.AboutFragment"
@@ -58,4 +82,9 @@
         android:name="com.example.maintain.ui.me.KeyFragment"
         android:label="fragment_key"
         tools:layout="@layout/fragment_key" />
+    <fragment
+        android:id="@+id/commonProblemFragment"
+        android:name="com.example.maintain.ui.learn.problem.CommonProblemFragment"
+        android:label="fragment_common_problem"
+        tools:layout="@layout/fragment_common_problem" />
 </navigation>

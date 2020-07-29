@@ -9,6 +9,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -52,6 +54,14 @@ public class RegisterFragment extends Fragment {
                 } else {
                     binding.butSave.setText("清除Key");
                 }
+            }
+        });
+
+        binding.butBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navigation = Navigation.findNavController(v);
+                navigation.navigateUp();
             }
         });
 
