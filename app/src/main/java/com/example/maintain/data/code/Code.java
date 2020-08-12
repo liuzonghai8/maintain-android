@@ -17,7 +17,7 @@ public class Code {
     //建议
     private String advise;
 
-    //设备型号 [YH 、HCM、ATM&CRS响应码、ITM响应码]
+    //设备型号 [YH 0 、HCM 1 、ATM&CRS响应码 2 、ITM响应码 3]
     @ColumnInfo(name = "device_type")
     private Integer deviceType;
 

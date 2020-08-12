@@ -71,4 +71,8 @@ private static final String MD5="MD5";
     }
 
 
+    public static void test(String str) {
+        String dse = getSHA(str, "DSE");
+        Log.d("TEST_LOG",dse);
+    }
 }

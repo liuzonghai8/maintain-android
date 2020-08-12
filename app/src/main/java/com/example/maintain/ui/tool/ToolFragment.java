@@ -30,7 +30,7 @@ public class ToolFragment extends BasicFragment {
     private FragmentToolBinding binding;
     private CodeViewModel model;
     //tabs 标题
-    private String[] tabsTitle = {"YH", "3260", "ATM响应码", "ATM响应码"};
+    private String[] tabsTitle = {"YH", "3260", "ATM响应码", "ITM响应码"};
     public static final String TAB_SELECT_Tool = "TAB_SELECT_Tool";
 
 

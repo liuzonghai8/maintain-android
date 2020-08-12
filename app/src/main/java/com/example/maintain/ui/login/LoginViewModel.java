@@ -40,6 +40,8 @@ public class LoginViewModel extends AndroidViewModel {
 
     //认证 绑定login登陆按钮
     public void authenticate() {
+        //test
+
         // Log.d("TAG_LOG","-----authenticate-- 认证开始---");
         // SharedData sd = new SharedData(getApplication());
         if (keyIsValidForUsername()) {
@@ -93,6 +95,7 @@ public class LoginViewModel extends AndroidViewModel {
         valid.setValue(false);
         return false;
     }
+
 
 
 

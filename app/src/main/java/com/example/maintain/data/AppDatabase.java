@@ -33,6 +33,7 @@ public abstract class AppDatabase extends RoomDatabase {
                             public void onCreate(@NonNull SupportSQLiteDatabase db) {
                                  super.onCreate(db);
 //                                配置运行任务的方式和时间 只运行一次
+                                //SeedDatabaseWorker 将json数据 写入数据库中
                                 OneTimeWorkRequest request = new OneTimeWorkRequest.Builder(SeedDatabaseWorker.class).build();
 //                                将任务提交给系统
                                  WorkManager.getInstance(context).enqueue(request);

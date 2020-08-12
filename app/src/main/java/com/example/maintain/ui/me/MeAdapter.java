@@ -1,5 +1,6 @@
 package com.example.maintain.ui.me;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +22,9 @@ import com.example.maintain.databinding.CellMeBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.maintain.R.id.frame_main;
+
 //RecyclerView.Adapter<MeAdapter.MeItemHolder>
 //<MeAdapter.MeItemHolder>?
 class MeAdapter extends RecyclerView.Adapter<MeAdapter.MeItemHolder>  {
@@ -63,7 +67,8 @@ class MeAdapter extends RecyclerView.Adapter<MeAdapter.MeItemHolder>  {
             public void onClick(View v) {
                 //主导航
                final NavController mainNavController = Navigation.findNavController(v);
-//                Log.d("TAG_LOG","++++=====position==========="+position);
+              // final NavController mainNav = Navigation.findNavController(v.getRootView());
+              //  Log.d("TAG_LOG","++++=====position===v.getRootView()========"+v.getRootView()+"  -  -mainNav: ---- "+mainNav+" ==== mainNavController===="+mainNavController);
                 switch (position){
                     case 0:
                         mainNavController.navigate(R.id.action_navigation_me_to_feedBackFragment);
@@ -72,12 +77,12 @@ class MeAdapter extends RecyclerView.Adapter<MeAdapter.MeItemHolder>  {
                         mainNavController.navigate(R.id.action_navigation_me_to_settingFragment);
                         break;
                     case 2:
+//                        mainNav.navigate(R.id.action_navigation_me_to_aboutFragment);
                         mainNavController.navigate(R.id.action_navigation_me_to_keyFragment);
                         break;
                     default:
                         break;
                 }
-
 
             }
         });

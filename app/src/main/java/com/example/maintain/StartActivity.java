@@ -26,7 +26,6 @@ public class StartActivity extends AppCompatActivity {
                 // Start the activity
                 startActivity(intent);
                 finish();
-
             }
         });
     }
