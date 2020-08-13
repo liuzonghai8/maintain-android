@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nar_maintain"
-    app:startDestination="@id/main_fragment">
+    app:startDestination="@id/startFragment">
 
     <fragment
         android:id="@+id/main_fragment"
@@ -40,4 +40,13 @@
         android:id="@+id/keyFragment2"
         android:name="com.example.maintain.ui.me.KeyFragment"
         android:label="KeyFragment" />
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.example.maintain.ui.StartFragment"
+        android:label="fragment_start"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_main_fragment"
+            app:destination="@id/main_fragment" />
+    </fragment>
 </navigation>

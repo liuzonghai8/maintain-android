@@ -11,10 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.maintain.R;
@@ -23,19 +20,12 @@ import com.example.maintain.databinding.CellMeBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.maintain.R.id.frame_main;
 
-//RecyclerView.Adapter<MeAdapter.MeItemHolder>
-//<MeAdapter.MeItemHolder>?
 class MeAdapter extends RecyclerView.Adapter<MeAdapter.MeItemHolder>  {
 
 //class MeAdapter extends ListAdapter<Me,MeAdapter.MeItemHolder> {
     List<Me> allMes = new ArrayList<>();
-//
-//    protected MeAdapter(@NonNull DiffUtil.ItemCallback<Me> diffCallback) {
-//        super(diffCallback);
-//    }
-
+     NavController mainNavController;
     public void setAllMes(List<Me> allMes) {
         this.allMes = allMes;
     }
@@ -50,6 +40,7 @@ class MeAdapter extends RecyclerView.Adapter<MeAdapter.MeItemHolder>  {
         return new MeAdapter.MeItemHolder(viewItem);
 
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull final MeAdapter.MeItemHolder holder, final int position) {
@@ -66,9 +57,9 @@ class MeAdapter extends RecyclerView.Adapter<MeAdapter.MeItemHolder>  {
             @Override
             public void onClick(View v) {
                 //主导航
-               final NavController mainNavController = Navigation.findNavController(v);
-              // final NavController mainNav = Navigation.findNavController(v.getRootView());
-              //  Log.d("TAG_LOG","++++=====position===v.getRootView()========"+v.getRootView()+"  -  -mainNav: ---- "+mainNav+" ==== mainNavController===="+mainNavController);
+               mainNavController = Navigation.findNavController(v);
+            //   final NavController mainNav = Navigation.findNavController(v.getRootView());
+                Log.d("TAG_LOG","++++=====position===v.getRootView()========"+v);
                 switch (position){
                     case 0:
                         mainNavController.navigate(R.id.action_navigation_me_to_feedBackFragment);

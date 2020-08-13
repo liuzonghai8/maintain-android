@@ -13,13 +13,16 @@ import androidx.work.WorkManager;
 
 import com.example.maintain.data.code.Code;
 import com.example.maintain.data.code.CodeDao;
+import com.example.maintain.data.problem.Problem;
+import com.example.maintain.data.problem.ProblemDao;
 import com.example.maintain.works.SeedDatabaseWorker;
 
 import java.util.List;
 
-@Database(entities = {Code.class}, version = 2 ,exportSchema = false)
+@Database(entities = {Code.class, Problem.class}, version = 3 ,exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
      public abstract CodeDao getCodeDao();
+     public abstract ProblemDao getProblemDao();
      private static AppDatabase INSTANCE;
 
      public static synchronized AppDatabase getDatabase(final Context context){

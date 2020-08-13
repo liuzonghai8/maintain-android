@@ -79,9 +79,6 @@ public class CodeRepository {
         }
     }
 
-
-
-
     //添加线程
     static class InsertAsyncTask extends AsyncTask<Code,Void,Void> {
         private  CodeDao codeDao;
@@ -108,47 +105,5 @@ public class CodeRepository {
             return null;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    //获取全部
-//    public LiveData<List<Code> >getAllCode(){
-//        return dao.loadAllCode();
-//    }
-//
-//    public List<Code> getCodeWithName(String search){
-//        return dao.findCodeWithName(search);
-//    }
-//
-//    //模糊查询
-//    public List<Code> getCodeWithNameAndType(String type,String search){
-//        //TODO 应该是分页
-//        return dao.findCodeWithNameAndType(type,search);
-//    }
-//
-//    public void addCode(Code...codes){
-//        dao.saveCode(codes);
-//    }
-
-
-
-
-
 
 }

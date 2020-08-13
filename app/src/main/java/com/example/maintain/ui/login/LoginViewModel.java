@@ -78,8 +78,8 @@ public class LoginViewModel extends AndroidViewModel {
      //   String result = EncryptUtil.calculateKey(username.getValue(), device);
         //  Log.d("TAG_LOG","-----calculate key-----"+result+username.getValue());
 //        String key = sharedData.loadKey();
-        String s = EncryptUtil.calculateKey("18978704599", "263ad18a19eba1dd");
-//        String s = EncryptUtil.calculateKey("18812345678", "84029d1a22714ce9");
+//        String s = EncryptUtil.calculateKey("18978704599", "263ad18a19eba1dd");
+        String s = EncryptUtil.calculateKey("18812345678", "fe4b1f218dfc9520");
         Log.d("TAG_LOG", "-----测试s.-----" + s);
         //比较两个可以
         return EncryptUtil.calculateKey(username.getValue(), device).equals(sharedData.loadKey());
