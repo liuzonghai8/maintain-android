@@ -1,0 +1,402 @@
+[
+  {
+    "problemName": "应用起来后卡在系统启动中",
+    "advise": "SP没装好，应用起来卡住在打开设备的界面测试方法：把应用、sp关闭，用sp测试机芯是否能起来解决方法：1、重装sp或咨询厂商sp接口人；2、更换硬盘，重装系统。",
+    "problemType": 0
+  },
+  {
+    "problemName": "清机扎帐时报：机芯故障",
+    "advise": "1、检查保险柜门是否关紧，或相应的到位开关是否坏；2、初始化现金模块是否正常。如果正常，重装SP;如果报故障代码，按故障代码指示处理；如果无法连接机芯，检查USB端口、驱动和控制板等",
+    "problemType": 0
+  },
+  {
+    "problemName": "清机扎帐时提示：组数据包失败",
+    "advise": "原因是应用扎帐发报计算mac时密码键盘硬件故障。新装机或重装系统：检查sp配置和应用配置在国密非国密选择是否不一致；非新装机，重新更新密钥和下载参数",
+    "problemType": 0
+  },
+  {
+    "problemName": "Windows跨平台系统还原镜像后，设备一直自动重启",
+    "advise": "ncr.aptra.croeservice.exe程序在服务里面已经设置为自启动，如果使用不纯净版的PE系统还原镜像会删除ncr.aptra.croeservice.exe，导致设备不停的重启。建议重新格式化硬盘，分区，使用纯净版的ghost工具还原镜像。",
+    "problemType": 2
+  },
+  {
+    "problemName": "Windows跨平台系统还原镜像后，启动设备出现蓝屏、死机现象",
+    "advise": "如果没有格式化C盘就还原，或硬盘有坏，会出现此种现象。建行：格式化硬盘，分区，使用纯净版的ghost工具还原镜像。",
+    "problemType": 2
+  },
+  {
+    "problemName": "设备交易正常，柜员清机加钞时报\"上报拒绝\"",
+    "advise": "查看流水返回码是否为 2F，尾箱余额不足",
+    "problemType": 0
+  },
+  {
+    "problemName": "设备无存、取款功能",
+    "advise": "1、检查机芯是否正常；2、检查钞箱是否激活，回收箱是否丢失状态，怡化设备的E钞箱是否满；3、设备回收次数超限，会屏蔽钞箱功能，重新清机加钞解除，同时检查是什么原因引起的回收；4、以上三个都没有问题，则重新清机加钞；5、以上四个都没有问题，则重装系统",
+    "problemType": 0
+  },
+  {
+    "problemName": "怡化设备后维护屏显示无此设备",
+    "advise": "1、检查USB连线；2、重装该模块驱动；3、升级该模块固件",
+    "problemType": 1
+  },
+  {
+    "problemName": "怡化设备报FE27",
+    "advise": "1、检查USB连线，检查该模块控制板的连线；2、重装该模块驱动；3、升级该模块固件；4、更换该模块控制板",
+    "problemType": 1
+  },
+  {
+    "problemName": "怡化设备读卡器报FFFF",
+    "advise": "1、检查卡喉电路板指示灯是否亮，亮红灯关机断电5分钟。2、清机卡喉传感器",
+    "problemType": 1
+  },
+  {
+    "problemName": "Linux系统重装系或重装SP如何备份密钥连接文件",
+    "advise": "1、怡化设备：进入到/home/yihua/yihua/spup 目录下，找到 YHConfigEdit 工具，双击运行，找到physical_services/YHSpPINP005/keyInfo 点击文件-导出；2、新达通设备：把 计算机:/etc/ndt/persist文件备份",
+    "problemType": 0
+  },
+  {
+    "problemName": "设置主密钥报错误码99",
+    "advise": "1、核查本机的IP、网关、掩码是否输入有误。2、尝试telnet前置ip+端口号，若能telnet通，需要确认后台的配置本机参数是否正确。若telent不通，需要检查网络是否通，网管是否开通端口号。",
+    "problemType": 0
+  },
+  {
+    "problemName": "怡化设备扎账输入金额按确认后卡住不动",
+    "advise": "R钞箱清点钞票后没插到位，让维保拔插一次R钞箱后正常",
+    "problemType": 0
+  },
+  {
+    "problemName": "设备导密钥、下参数后，后维护所有模块正常，但设备暂停服务",
+    "advise": "让维保确认流水打印机是否无纸，如是，请装上纸（116及以上版本应用的流水开关都是有后台控制（无纸化参数），本地关闭是无效的（重启后（参数更新）又会开启）\n\n所以，屏蔽流水，需让网点提需求给分行，分行转给总行，总行通过后修改监控参数才可关闭）",
+    "problemType": 0
+  },
+  {
+    "problemName": "设备正常加钞后，插卡验密报ZI",
+    "advise": "ZI——PIN格式错\n密码键盘sp配置和应用在国密非国密选择有误",
+    "problemType": 0
+  },
+  {
+    "problemName": "设备导密钥、下参数后，后维护所有模块正常，但设备暂停服务（流水已屏蔽）",
+    "advise": "看流水中更新密钥是否成功，报Z9的重导密钥，无响应码的ping  22.230.26.6；如果网络不通，联系分行科技排查FTP网络",
+    "problemType": 0
+  },
+  {
+    "problemName": "没有存取款项",
+    "advise": "1. 机芯故障——复位机芯\n\n2. 钞箱是否激活，激活方法：打开后维护技术管理员--其他功能管理--激活钞箱\n\n3. 应用操作超时回收2次，会屏蔽钞箱功能，复位机芯（或者）就行",
+    "problemType": 0
+  },
+  {
+    "problemName": "没有存款项",
+    "advise": "卡表没给该卡配置取款功能，确认方法（详细看附录2）：打开Home/yihua/projects/PostBank/data下的CardTable.json或ICCardTable.json，查找卡号前五位，看卡表交易列表第5位是否为1 ，如果为0，可以联系分行设备管理员确认",
+    "problemType": 0
+  },
+  {
+    "problemName": "没有缴费",
+    "advise": "1.确认代理导航参数是否下载成功（后维护-技术管理员-参数下载）\n\n2.查看卡表确认该卡是否可以缴费（详细看附录2）",
+    "problemType": 0
+  },
+  {
+    "problemName": "部分缴费没有",
+    "advise": "1.重新下载代理导航参数（就是缴费参数）\n\n2.查看缴费参数文件：Home/yihua/projects/PostBank/data下的DJF.json，如果确实是没有，可以联系分行设备管理员确认，让分行添加",
+    "problemType": 0
+  },
+  {
+    "problemName": "正常对外，交易报ZA",
+    "advise": "柜员号不合法（判断：管机员上次加钞时输入柜员号有错误字符）\n\n请让管机员重新轧账，重新轧账后问题解决（部分设备柜员号不能是7个0）",
+    "problemType": 0
+  },
+  {
+    "problemName": "清机轧账报71",
+    "advise": "原因：网点设备本地的轧账、加钞方式与后台的不匹配（实际原因：后台修改了轧账或加钞方式，但本地没改）\n\n解决方法一：（本地改）\n\n1. 先让网点确认设备的（在后台的）加钞方式和轧账方式\n\n2. 进后维护-技术管理员-参数设置-加钞方式/轧账方式（修改成与后台相同）\n\n方法二：（后台改）\n\n1. 进确认本地参数：后维护-技术管理员-参数设置-加钞方式/轧账方式\n\n2. 让后台修改设备（在后台的）加钞方式和轧账方式（修改成与本地相同）",
+    "problemType": 0
+  },
+  {
+    "problemName": "轧账报3M",
+    "advise": "原因： 设备（老系统）在后台的轧账方式为预轧账，且切换新系统前轧账未平或未轧账\n\n解决方法：\n\n1. 重装115应用，直接升到117或以上版本\n\n2. 让后台（分行业务）把设备的轧账方方式改为预轧账，把设备上的轧账方式也改为预轧账（后维护——技术管理员——参数设置——轧账方式， 如果没有预轧账，请先修改一下加钞方式）\n\n3. 先在柜面做预轧账（平），再到设备做一次轧账（平）\n\n4. 让后台把轧账方式改回终端轧账，并把本地的轧账方式、加钞方式都改回来\n\n5. 轧账加钞",
+    "problemType": 0
+  },
+  {
+    "problemName": "轧账报45",
+    "advise": "解决方法：让管机员调整尾箱",
+    "problemType": 0
+  },
+  {
+    "problemName": "清机扎帐时报：报文解析错",
+    "advise": "1. 退出维护进入空闲后再重新进去轧账。\n\n2. 如1未解决，直接拷贝日志转给厂商sp接口人（报文发送接收后，计算Mac时报密码键盘硬件故障）\n\n3. 查看密码键盘是否故障，重新加载密钥和下载参数",
+    "problemType": 0
+  },
+  {
+    "problemName": "设备早上出现在加钞后系统重启",
+    "advise": "原因：管机员前一天清机后没有退出维护（在维护模式下应用到达自动重启时间，但在维护模式或客户交易时应用都不会自动重启），第二天继续加钞退出维护后，设备到达了（超过了）自动重启时间，进入离线模式时检测到重启命令，所以重启。\n\n解决方法：让网点规范操作，晚上清机后如果不关机，要退出维护",
+    "problemType": 0
+  },
+  {
+    "problemName": "IC卡交易返回4J",
+    "advise": "读卡器IC卡读取失败，更换读卡器。",
+    "problemType": 0
+  },
+  {
+    "problemName": "存折识别不了（折无效）",
+    "advise": "1. 确认卡表参数下载成功，如果下载失败，请参考“四．参数下载常见问题”\n\n2. 如果卡表下载成功，打开卡表：Home/yihua/projects/PostBank/data:CardTable.json文件，搜索存折折号的前4位（卡bin），如果找不到，则是卡表没配，联系分行设备管理员配卡表（详细看附录2）\n\n3. 如果卡表下载成功，且卡表中可搜索到卡bin，请拷贝日志转sp接口人（应该是sp获取的存折二磁数据有误）",
+    "problemType": 0
+  },
+  {
+    "problemName": "凭条打印格式不对/切纸不对 （套打）",
+    "advise": "1. 确认安装顺序：安装完sp后安装平台应用。如果是重装了sp，请关闭sp、应用后，重装一次平台应用\n\n2. 凭条纸规格不是通用凭条，解决方法1：更换凭条纸，解决方法2：请联系sp接口人",
+    "problemType": 0
+  },
+  {
+    "problemName": "怡化设备模块报[00-0001]故障",
+    "advise": "该模块与主机未连接到位，请更换模块在主机USB接口换一个插上后，重启设备",
+    "problemType": 0
+  },
+  {
+    "problemName": "设备无法退出维护模式",
+    "advise": "请联系厂商sp接口人（退出维护关门后，sp没有返回OperaterSwitchChange事件）",
+    "problemType": 0
+  },
+  {
+    "problemName": "应用没起来",
+    "advise": "1. 检查应用安装是否安装少了包（平台两个包+应用1个包）\n\n2. 如果不是1，请重新下载安装包安装（3个，安装前请确认sp、应用关闭）",
+    "problemType": 0
+  },
+  {
+    "problemName": "应用起来后模块故障（通信模块不算）",
+    "advise": "1. 是否是磨砂卡（在BIOS中修改I/O连接方式）\n\n2. 模块是否需要断电重启\n\n3. 测试方法：把应用、sp关闭，用sp测试是否能起来，起不来的话考虑重装sp或咨询厂商sp接口人",
+    "problemType": 0
+  },
+  {
+    "problemName": "新装机他行卡交易报ZZ，本行卡ok",
+    "advise": "1. 新装机他行卡报ZZ一般是设备的机构号入网不完全，请让分行的业务把该机构号到银联前置和逻辑集中这两处做补录\n2. 如果1未能解决，请把报ZZ交易的日期、设备号、流水号和问题发给后台交易端查（先转给分行科技--分行科技转给微信Linux推广群，让后台交易端排查）",
+    "problemType": 0
+  },
+  {
+    "problemName": "正常使用突发交易ZZ",
+    "advise": "解决方法：请把报ZZ交易的日期、设备号、流水号和问题发给后台交易端查（先转给分行科技--分行科技转给微信Linux推广群，让后台交易端排查）",
+    "problemType": 0
+  },
+  {
+    "problemName": "系统反复重启",
+    "advise": "原因：没打系统时间补丁包\n\n1.在系统起来后，机芯打开完成前，关闭应用\n\n2.打上系统时间补丁包",
+    "problemType": 0
+  },
+  {
+    "problemName": "后台显示设备未知故障",
+    "advise": "1. 确认应用版本在0116b17以上，平台版本在4918以上\n\n2. 到设备上做一次参数下载，如果参数下载失败，请让分行排查设备监控网络；\n\n3. 如果1、2成功，30分钟后再和分行确认设备状态，如果依旧报未知故障，请拷贝日志转项目组",
+    "problemType": 0
+  },
+  {
+    "problemName": "远程广告图片下发失败或远程升级失败",
+    "advise": "参考“Linux远程升级失败排查方法.doc”",
+    "problemType": 0
+  },
+  {
+    "problemName": "交易成功（冲正成功），钱未上账（没冲回去）",
+    "advise": "1. 转账24小时后到账；\n\n如果不是1，请：\n\n2. 先让客户或网点确认钱已扣，然后让网点提调账问题单给分行；\n\n3. 把设备号、冲正成功的流水号、被冲正的流水号和问题提给分行科技，让分行科技转总行(微信Linux推广群，让后台交易端排查)",
+    "problemType": 0
+  },
+  {
+    "problemName": "（夜间）自动重启失败，卡在绿色inwise界面或黑色watchdog界面",
+    "advise": "直接联系厂商接口人（把信息转给分行，让分行上报总行）",
+    "problemType": 0
+  },
+  {
+    "problemName": "取款失败，流水显示配钞失败",
+    "advise": "拷贝日志转厂商接口人",
+    "problemType": 0
+  },
+  {
+    "problemName": "新装机轧账报ZZ",
+    "advise": "让后台查流水：机构号不对，请联系分行确认(机构号未入网）",
+    "problemType": 0
+  },
+  {
+    "problemName": "通信连接失败、清机单上异常交易报AT（通信超时）",
+    "advise": "ping  22.230.26.0（ping个5分钟看看）\n\n看是否每秒刷新一条的，如果不是（即掉包），请联系分行科技排查网络",
+    "problemType": 0
+  },
+  {
+    "problemName": "后台（监控端）说查看不到此设备",
+    "advise": "确认应用版本是0116b17或以上\n\n做一下参数下载\n另外，总行设备未分配时分行也无法看到设备状态",
+    "problemType": 0
+  },
+  {
+    "problemName": "夜间重启后密钥更新没响应码，白天重启后正常",
+    "advise": "1. 重启前ping  127.0.0.1   如果不通，请拷贝日志（包括系统日志）转项目组\n\n2. 如1正常，ping  22.230.26.6（telnet  22.230.26.6  18051），如果网络不通，联系分行科技排查网络",
+    "problemType": 0
+  },
+  {
+    "problemName": "设备时间不对",
+    "advise": "1. 确认系统时间补丁是否安装\n\n2. 当设备时间与网络时间相差不过30分钟时，不会对时",
+    "problemType": 0
+  },
+  {
+    "problemName": "网点要屏蔽存款功能",
+    "advise": "关闭应用、sp，修改CIM存款模块逻辑名（计算机-etc-xfs-logical_services-CashAccepter.ini的文件名，改为CashAccepter111.ini）\n\n如要恢复，改回来即可",
+    "problemType": 0
+  },
+  {
+    "problemName": "应用卡死、卡住、死机",
+    "advise": "一般为sp没返回，拷贝日志转厂商sp接口人",
+    "problemType": 0
+  },
+  {
+    "problemName": "新装机插卡报ZZ",
+    "advise": "把设备号、插卡的流水号和问题提给分行科技，让分行科技转总行(微信Linux推广群，让后台交易端排查)",
+    "problemType": 0
+  },
+  {
+    "problemName": "长款、短款（或者干长、干短）",
+    "advise": "1. 查看清机单，与后台核对可疑交易\n\n2. 清查清机段内所有流水\n\n3. 转日志给sp（或技术支持），查看是否每笔的流水与底层钞箱变动一致\n\n4. 查看清机段的加钞监控、交易监控",
+    "problemType": 0
+  },
+  {
+    "problemName": "修改轧账方式为预轧账时找不到预轧账",
+    "advise": "需先把加钞方式修改一下",
+    "problemType": 0
+  },
+  {
+    "problemName": "IC卡其他转活期提示不支持",
+    "advise": "原因：后台管理端没开这个功能\n\n解决：让省分行业务（在管理端）打开这个开关，重启电脑（或重新下载参数）",
+    "problemType": 0
+  },
+  {
+    "problemName": "新达通3260改钞箱功能",
+    "advise": "进目录usr→local→ndt→bin→CashUitSettingTool更改",
+    "problemType": 2
+  },
+  {
+    "problemName": "设备机芯还可以通过自检，设备也能对外，也有取款项出来，但是客户取钱的时候设备就报错了，在后屏也没有报错，只能通过流水才能发现提示是保险柜门开。",
+    "advise": "怡化的设备，Windows跨平台的，如果保险门开关的线断了，把保险柜门关上，设备机芯还可以通过自检，设备也能对外，也有取款项出来，但是客户取钱的时候设备就报错了，在后屏也没有报错，只能通过流水才能发现提示是保险柜门开。\nLinux跨平台，设备的机芯会报错，但是不能通过后屏界面查看，只能通过设备的日志查看，才知道保险柜门开。\n因为这个问题是线断了，即使门已经关闭，但是传感器已经失效了。",
+    "problemType": 2
+  },
+  {
+    "problemName": "怡化查流水路径",
+    "advise": "Home/yihua/projects/PostBank/log 文 件夹下，清 机前Elog，清机 后ClearDat。\n打包命令 tar -cvzf ElogXXXX.tar.giz Elog/\n下载命令 sz \n上传命令 rz\nErrorcode路径：home/atmuser/ATM/log/brm",
+    "problemType": 2
+  },
+  {
+    "problemName": "自助设备需要开通的IP和端口",
+    "advise": "前置IP和端口：22.230.26.6 18051监控服务器IP和端口：22.230.26.8 7002\n版本服务器IP和端口：10.243.5.151 2222\n刷脸设备需新增开通IP和端口\n22.230.26.6 19001\n22.224.33.171 19001\n22.224.33.171 21001-21200\n22.224.33.172 19001 \n22.224.33.172 21201-21400",
+    "problemType": 2
+  },
+  {
+    "problemName": "Linux电子流水上传失败",
+    "advise": "1、版本确认\n确认应用版本号在0116b17以上（开机流水有）\n确认平台版本为4918或以上\n2、检查网络\n(1)前置IP和端口Ping 22.230.22.6；telnet 22.230.22.6 18051 \n(2)监控服务器 ping 22.230.22.8; telnet22.230.22.8 7002\n(3)版本服务器 ping 10.243.0.197 telnet 10.243.0.197 2222\n(4)Ping 10.243.5.151 telnet 10.243.5.151 2222\n3、检查该文件是否与版本相符\nhome/yihua/projects/postbank/data/datapool.ini\n4、重装系统",
+    "problemType": 2
+  },
+  {
+    "problemName": "新达通3260密钥文件",
+    "advise": "路径为/etc/ndt/persist\n覆盖persist文件 可以不用灌密钥",
+    "problemType": 2
+  },
+  {
+    "problemName": "冠字号图片",
+    "advise": "计算机/var/lfs：snrinfo文件夹\n冠字号图片拷贝方法：\n1. 在Home目录下右键点击空白处-打开终端\n2. 输入 sudo tar cavf ~/snr.tar.gz /var/lfs/snrinfo\n3. 把Home目录下生成的snr.tar.gz 拷贝出来",
+    "problemType": 2
+  },
+  {
+    "problemName": "怡化FFF7",
+    "advise": "验钞模块故障，\n1.关机断电，检查BV连接是否良好\n2.更换BV。",
+    "problemType": 1
+  },
+  {
+    "problemName": "怡化前屏失效",
+    "advise": "1.检查屏幕上是否粘有异物。\n2.拔插下USB连接线。\n3.重新安装驱动。\n4.申请更换。",
+    "problemType": 1
+  },
+  {
+    "problemName": "怡化C款更换上控板后报FE20",
+    "advise": "重装驱动\n1、/主文件夹/MainCtrlUpgrade/\n2、在终端中输入 ./MCDriver\n3、在终端中输入 ./MCSInstallerALL.sh",
+    "problemType": 1
+  },
+  {
+    "problemName": "初始化CDKey失败",
+    "advise": "解决方法：\n1.报RVD005，请检查网络；\n2.报RVD006，请检查网络和机器的设备号与所属机构号是否正确，一般情况下所属机构号应是Z结尾的一组字符。\n3.报H0，请联系分行设备管理员修改入网注册IP地址；\n4.报Z3，请联系分行设备管理员进行设备入网注册；\n5.报Z4，请联系分行设备管理员确认设备状态；\n6.报ZD，请联系分行设备管理员确认UKEY注册信息；\n7.报Z9，请插入UKEY重新初始化CDK。",
+    "problemType": 0
+  },
+  {
+    "problemName": "设置主密钥，流水显示-99",
+    "advise": "•解决方法：\n•1.先检测通信：后维护--技术管理员--其他功能管理--设备管理--通信检测;\n•2.如果不是通信正常（通信正常请直接重导密钥），请检查网线是否插好，检查本地IP、掩码和网关；\n•3.检查2没有问题后，请ping前置IP22.230.26.6;\n•4.若前置IP能ping通，而设置主密钥直接报交易失败，请到后维护检查前置IP、端口号是否正确;\n•5.若检查前置IP、端口没有问题，则telnet前置IP、端口(18051)，若telnet不通，请联系分行科技排查网络端口.",
+    "problemType": 0
+  },
+  {
+    "problemName": "下载参数时，所有参数下载都失败。",
+    "advise": "1.打开后维护技术管理员--参数设置--设置网络参数--监控网络参数（如果监控参数错误，请改正后再重新下载参数）；\n2.如果确认监控参数无错，但所有参数还是下载失败，可以ping监控IP22.230.26.8；\n3.若监控IP能ping通，但还是下载失败，则telnet监控IP、端口(7002)，若telnet不通，请联系分行科技排查网络端口，若telnet能通，请联系分行科技或者后台监控端的相关负责人处理；",
+    "problemType": 0
+  },
+  {
+    "problemName": "3260报40A8010",
+    "advise": "代码指向S001，但在UT里看传感器值正常。\n解决方案：现场更换UF后恢复；\nUF维修结果，更换S001传感器一对后恢复正常。",
+    "problemType": 0
+  },
+  {
+    "problemName": "07-0900/07-A901",
+    "advise": "暂存故障，更换后恢复。",
+    "problemType": 1
+  },
+  {
+    "problemName": "3260大华监控主机可以正常开机，但无法认到硬盘。",
+    "advise": "电源适配器性能下降，无法带负载，更换电源适配器后恢复正常。",
+    "problemType": 1
+  },
+  {
+    "problemName": "3260在LINUX下机芯无动作，但在UT2001复位正常。",
+    "advise": "检查BV的USB连接线。",
+    "problemType": 1
+  },
+  {
+    "problemName": "Linux系统扎账过程中少打印可疑交易单",
+    "advise": "1、重新安装应用。\n2、重新安装整个系统。",
+    "problemType": 0
+  },
+  {
+    "problemName": "微信无法收到故障信息。",
+    "advise": "按微信银行签约流程操作，注意事项如下：\n1、微信绑定的手机必须要跟手机银行的号码一致。\n2、自助银行管理监控系统的号码也要跟手机银行的号码一致。\n3、手机必须开通了手机银行才能绑定，没有开通的就去银行去开\n",
+    "problemType": 3
+  },
+  {
+    "problemName": "windows系统移动窗口快捷键",
+    "advise": "alt+空格+M，然后用方向键移动",
+    "problemType": 2
+  },
+  {
+    "problemName": "3260机芯模块是绿的，但是复位无动作，监控报故障。",
+    "advise": "检查机芯电源供电是否正常，用UT脱机测试，找到相应问题并处理。",
+    "problemType": 1
+  },
+  {
+    "problemName": "CA30主机主板BIOS设置双屏显示",
+    "advise": "进入BIOS--CHIPSET-graphics ??--LCD control",
+    "problemType": 1
+  },
+  {
+    "problemName": "CA30主板COM口设置",
+    "advise": "由于这款主板的COM是USB转的，所以必须要在BIOS里开启(USB configuration)",
+    "problemType": 1
+  },
+  {
+    "problemName": "怡化设备报D310驱动模块通讯错误",
+    "advise": "1、断电重启\n2、检查连接\n3、重装驱动\n4、重装SP",
+    "problemType": 1
+  },
+  {
+    "problemName": "怡化C款凭条不切纸",
+    "advise": "1、检查纸张（长条黑标，装纸时黑标朝下）\n2、检查切纸刀是否安装到位。\n3、更换凭条。",
+    "problemType": 1
+  },
+  {
+    "problemName": "怡化LINUX系统更换密码键盘后报故障",
+    "advise": "1、初始化密码键盘是否正常。\n2、如不正常，更换密码键盘。\n3、如正常，则更改国密非国密设置。",
+    "problemType": 1
+  },
+  {
+    "problemName": "怡化windows更改退卡长度",
+    "advise": "[HKEY_LOCAL_MACHINE\\SOFTWARE\\YIHUA\\Driver\\YHDrIDC3Q8]\r\n;CommandIntervalTime:命令执行间隔时间 毫秒为单位计算\r\n;[默认为0]\r\n;\"CommandIntervalTime\"=dword:00000000\n;控制(减小)退卡量(mm) \n;[0-最大退卡量25]\r\n\"EjectVolume\"=dword:00000019",
+    "problemType": 0
+  },
+  {
+    "problemName": "新达通3260重装SP后密码键盘报错",
+    "advise": "注意检查密码键盘接的是哪个COM口。",
+    "problemType": 0
+  }
+]

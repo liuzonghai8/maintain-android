@@ -22,7 +22,7 @@ public class ProblemRepository {
     private ProblemRepository(Context context) {
         AppDatabase database = AppDatabase.getDatabase(context.getApplicationContext());
         problemDao = database.getProblemDao();
-        allProblems = problemDao.findProblemWithName("0%");
+        allProblems = problemDao.loadAllProblem();
     }
 
     //单例模式
@@ -43,19 +43,15 @@ public class ProblemRepository {
         if (TextUtils.isEmpty(search)) {
             return null;
         }
-//        try {
-//            List<Problem> problems = new QueryAsyncTask(problemDao).execute(search + "%").get();
-//            Log.d("TAG_LOG", "---   --获取的数据--" + problems);
-//            return problems;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-   //     return problemDao.findProblemWithName(search);
-        return null;
-
+        try {
+            List<Problem> problems = new QueryAsyncTask(problemDao).execute(search + "%").get();
+            Log.d("TAG_LOG", "---   --获取的数据--" + problems);
+            return problems;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
-
 
     //添加
     public void addProblem(Problem... problems) {
@@ -67,19 +63,20 @@ public class ProblemRepository {
         new DeleteAllAsyncTask(problemDao).execute();
     }
 
-//    //    //查询线程
-//    static class QueryAsyncTask extends AsyncTask<String, Void, List<Problem>> {
-//        private ProblemDao problemDao;
-//
-//        public QueryAsyncTask(ProblemDao problemDao) {
-//            this.problemDao = problemDao;
-//        }
-//
-//        @Override
-//        protected List<Problem> doInBackground(String... strings) {
-//            return problemDao.findProblemWithName(strings[0]);
-//        }
-//    }
+    //    //查询线程
+    static class QueryAsyncTask extends AsyncTask<String, Void, List<Problem>> {
+        private ProblemDao problemDao;
+
+        public QueryAsyncTask(ProblemDao problemDao) {
+            this.problemDao = problemDao;
+        }
+
+        @Override
+        protected List<Problem> doInBackground(String... strings) {
+            Log.d("TAG_LOG","====传入参数：===="+strings+"  0=="+strings[0]);
+            return problemDao.findProblemWithName(strings[0]);
+        }
+    }
 
 
     //添加线程

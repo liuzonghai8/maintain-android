@@ -27,7 +27,7 @@ public interface ProblemDao {
     public void deleteAll();
 
     //查询所有，按名排序
-    @Query("SELECT * FROM t_problem  WHERE problem_name LIKE '0%' ORDER BY id ")
+    @Query("SELECT * FROM t_problem  ORDER BY id ")
     public LiveData<List<Problem>> loadAllProblem();
 
     /**
@@ -35,8 +35,9 @@ public interface ProblemDao {
      * @param search
      * @return
      */
-    @Query("SELECT * FROM t_problem WHERE problem_name  LIKE   :search ")
-    public LiveData<List<Problem>> findProblemWithName(String search);
+    @Query("SELECT * FROM t_problem WHERE problem_name  LIKE   :search ORDER BY id")
+//    @Query("SELECT * FROM t_problem WHERE problem_name  ORDER BY id")
+    public List<Problem> findProblemWithName( String search);
 
 
 }

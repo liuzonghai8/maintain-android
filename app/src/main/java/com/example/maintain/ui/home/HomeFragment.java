@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d("TAG_LOG","=====test======");
-                mainNavController.navigate(R.id.action_main_fragment_to_aboutFragment2);
+
             }
         });
 

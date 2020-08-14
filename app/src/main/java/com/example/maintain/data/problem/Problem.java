@@ -16,7 +16,7 @@ public class Problem {
     //建议
     private String advise;
 
-    //问题类型（应用：0，硬件：1，系统：2）
+    //问题类型（应用：0，硬件：1，系统：2,业务 3）
     @ColumnInfo(name = "problem_type")
     private int problemType;
 

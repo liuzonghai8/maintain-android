@@ -16,7 +16,7 @@ public class CodeRepository {
     private static  CodeRepository codeRepository=null;
     private LiveData<List<Code>> allCodes;
     //查询的数据
-    private LiveData<List<Code>> searchCodes; //= codeDao.findCodeWithNameAndType("YH6040W","");
+    private LiveData<List<Code>> searchCodes;
 
     //构造函数
     private CodeRepository(Context context) {

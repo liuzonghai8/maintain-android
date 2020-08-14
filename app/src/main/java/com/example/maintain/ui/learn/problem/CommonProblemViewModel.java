@@ -1,6 +1,8 @@
 package com.example.maintain.ui.learn.problem;
 
 import android.app.Application;
+import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -29,5 +31,15 @@ public class CommonProblemViewModel extends AndroidViewModel {
         keyWord.setValue("");
         problemRepository=ProblemRepository.getProblemRepository(application);
         searchProblems=problemRepository.getAllProblems();
+    }
+
+    public List<Problem> getProblems( ){
+        Log.d("TAG_LOG", "--CommonProblemViewModel-getAllProblems-- keyword: ==="+keyWord.getValue());
+        LiveData<List<Problem>> allProblems = problemRepository.getAllProblems();
+        Log.d("TAG_LOG", "--CommonProblemViewModel-getAllProblems-- allProblems: ==="+allProblems.getValue());
+        if(TextUtils.isEmpty(keyWord.getValue())){
+            return null;
+        }
+        return problemRepository.getSearchProblem(keyWord.getValue());
     }
 }

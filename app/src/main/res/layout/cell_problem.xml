@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -26,6 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="0"
+                android:textColor="@color/design_default_color_on_secondary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline8"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,10 +41,11 @@
 
             <TextView
                 android:id="@+id/text_ploblem"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="问题"
+                android:textColor="@color/design_default_color_on_secondary"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/text_advise"
                 app:layout_constraintEnd_toStartOf="@+id/guideline9"
@@ -53,11 +55,12 @@
 
             <TextView
                 android:id="@+id/text_advise"
-                android:layout_width="58dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="建议"
-                android:textSize="18sp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/default_size"
                 app:layout_constraintBottom_toTopOf="@+id/text_type"
                 app:layout_constraintEnd_toStartOf="@+id/guideline9"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -66,11 +69,12 @@
 
             <TextView
                 android:id="@+id/text_type"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:hint="类型"
+                android:textColor="@color/design_default_color_on_secondary"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline9"

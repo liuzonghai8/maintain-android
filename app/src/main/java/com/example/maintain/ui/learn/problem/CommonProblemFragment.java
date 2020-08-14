@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,13 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.maintain.R;
 import com.example.maintain.basic.BasicFragment;
-import com.example.maintain.databinding.FragmentCodeBinding;
+import com.example.maintain.data.problem.Problem;
 import com.example.maintain.databinding.FragmentCommonProblemBinding;
-import com.example.maintain.databinding.FragmentCommonProblemBindingImpl;
-import com.example.maintain.ui.tool.CodeAdapter;
-import com.example.maintain.ui.tool.CodeViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CommonProblemFragment extends BasicFragment {
 
@@ -50,7 +48,20 @@ public class CommonProblemFragment extends BasicFragment {
         problemAdapter= new ProblemAdapter();
         binding.recyler.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.recyler.setAdapter(problemAdapter);
-//        codeAdapter.setAllCodes(model.listCodes());
+//        List<Problem> problems = new ArrayList<>();
+
+        //test
+//        for (int i=0;i<10;i++){
+//            Problem problem = new Problem();
+//            problem.setAdvise(i+"advise");
+//            problem.setId(i);
+//            problem.setProblemName("name+"+i);
+//            problem.setProblemType(i);
+//            problems.add(problem);
+//        }
+//
+//        problemAdapter.setAllProblems(problems);
+//        problemAdapter.notifyDataSetChanged();
         //有变更时更新数据
 
 
@@ -59,11 +70,11 @@ public class CommonProblemFragment extends BasicFragment {
             @Override
             public void onChanged(String s) {
                 //根据关键字查找数据
-                Log.d(TAG_LOG,"---CodeFragment   model.keyWord.observe--输入变化更新数据--");
+                Log.d(TAG_LOG,"---problemFragment   model.keyWord.observe--输入变化更新数据--");
                 //设置数据
-                problemAdapter.setAllProblems(model.searchProblems.getValue());
+                problemAdapter.setAllProblems(model.getProblems());
                 problemAdapter.notifyDataSetChanged();
-                Log.d(TAG_LOG,"---CodeFragment  model.getAllCodes().observe--数据变化更新视图--");
+                Log.d(TAG_LOG,"---problemFragment  model.getAllCodes().observe--数据变化更新视图--");
             }
         });
     }
