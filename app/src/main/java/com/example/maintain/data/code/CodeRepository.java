@@ -45,7 +45,8 @@ public class CodeRepository {
             return null;
         }
        try {
-           List<Code> codes = new QueryAsyncTask(codeDao).execute(type, search + "%").get();
+           //'%search%'	查找任意位置包含 search的任意值
+           List<Code> codes = new QueryAsyncTask(codeDao).execute(type, "%"+search + "%").get();
            Log.d("TAG_LOG","---getSearchCodes   --获取的数据--"+codes);
            return codes;
        }catch (Exception e){

@@ -18,9 +18,12 @@ import com.example.maintain.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.maintain.R.id.frame_main;
+
 public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.LearnItemHolder> {
 
-    List<Learn> allLearns= new ArrayList<>();
+    private List<Learn> allLearns= new ArrayList<>();
+    private NavController navController;
 
     public void setAllLearns( List<Learn> allLearns) {
         this.allLearns= allLearns;
@@ -34,6 +37,8 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.LearnItemHol
     @Override
     public LearnItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
+        navController=Navigation.findNavController(parent);
+        Log.d("TAG_LOG","====LearnAdapter=navController==========="+navController);
         //使用哪个页面layout
         View viewItem =layoutInflater.inflate(R.layout.cell_learn,parent,false);
         return new LearnItemHolder(viewItem);
@@ -59,18 +64,18 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.LearnItemHol
          holder.itemView.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 final NavController controller = Navigation.findNavController(v);
+                // final NavController controller = Navigation.findNavController(v);
                  Log.d("TAG_LOG","++++=====position==========="+position);
                  switch (position){
                      case 0:
-                         controller.navigate(R.id.action_navigation_learn_to_commonProblemFragment);
+                         navController.navigate(R.id.action_navigation_learn_to_commonProblemFragment);
                          break;
-                     case 1:
-                         controller.navigate(R.id.action_navigation_me_to_settingFragment);
-                         break;
-                     case 2:
-                         controller.navigate(R.id.action_navigation_me_to_keyFragment);
-                         break;
+//                     case 1:
+//                         controller.navigate(R.id.action_navigation_me_to_settingFragment);
+//                         break;
+//                     case 2:
+//                         controller.navigate(R.id.action_navigation_me_to_keyFragment);
+//                         break;
                      default:
                          break;
                  }

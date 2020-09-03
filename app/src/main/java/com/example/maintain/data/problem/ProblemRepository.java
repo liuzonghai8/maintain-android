@@ -44,7 +44,7 @@ public class ProblemRepository {
             return null;
         }
         try {
-            List<Problem> problems = new QueryAsyncTask(problemDao).execute(search + "%").get();
+            List<Problem> problems = new QueryAsyncTask(problemDao).execute("%"+search + "%").get();
             Log.d("TAG_LOG", "---   --获取的数据--" + problems);
             return problems;
         } catch (Exception e) {

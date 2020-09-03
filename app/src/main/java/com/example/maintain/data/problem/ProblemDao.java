@@ -35,7 +35,7 @@ public interface ProblemDao {
      * @param search
      * @return
      */
-    @Query("SELECT * FROM t_problem WHERE problem_name  LIKE   :search ORDER BY id")
+    @Query("SELECT * FROM t_problem WHERE problem_name  LIKE   :search ")
 //    @Query("SELECT * FROM t_problem WHERE problem_name  ORDER BY id")
     public List<Problem> findProblemWithName( String search);
 
