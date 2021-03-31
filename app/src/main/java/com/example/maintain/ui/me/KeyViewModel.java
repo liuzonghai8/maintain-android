@@ -25,7 +25,7 @@ public class KeyViewModel extends AndroidViewModel {
         phone.setValue("");
         deviceId.setValue("");
         key.setValue("");
-        if(sharedData.loadUserName().equals("18978704599")){
+        if(sharedData.loadUserName().equals("18978704599")||sharedData.loadUserName().equals("18812345678")){
             valid.setValue(true);
         }else
         {

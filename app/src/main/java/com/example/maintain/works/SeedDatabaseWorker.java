@@ -42,6 +42,7 @@ public class SeedDatabaseWorker extends Worker {
         // 2、将json文件转换成类
         List<Code> codes = new Gson().fromJson(codeJson, new TypeToken<List<Code>>(){}.getType());
         List<Problem> problems= new Gson().fromJson(problemJson,new TypeToken<List<Problem>>(){}.getType());
+        Log.d("TAG_LOG","===problems:===="+problems.toString());
 
         //3、插入到数据库中
         AppDatabase database = AppDatabase.getDatabase(getApplicationContext());

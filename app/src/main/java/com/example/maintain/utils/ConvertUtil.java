@@ -18,7 +18,7 @@ public class ConvertUtil {
     public static String JsonConvertToString(Context context, String fileName){
         try {
             //需要转换放到一个方法中
-            InputStream open  = context.getApplicationContext().getAssets().open("code.json");
+            InputStream open  = context.getApplicationContext().getAssets().open(fileName);
             int size = open.available();
             // Read the entire asset into a local byte buffer.
             byte[] buffer = new byte[size];

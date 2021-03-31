@@ -27,8 +27,8 @@
     <string name="shared_file_name">sharedKey</string>
     <string name="shared_key">key</string>
     <string name="toast_login_failed">Please contact the developer for login authentication error</string>
-    <string name="start_date">20200612</string>
-    <string name="end_date">20200820</string>
+    <string name="start_date">20200812</string>
+    <string name="end_date">20201020</string>
     <string name="toast_login_failed_date">Please contact the developer for Key expired</string>
     <string name="tag_log">TAG_LOG</string>
     <string name="but_clear_key">clearKey</string>

@@ -13,12 +13,12 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    private NavController mainNavController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //NavController mainNavController = Navigation.findNavController(this, R.id.nav_main);
+         mainNavController = Navigation.findNavController(this, R.id.nav_main);
     }
 
     @Nullable
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     public View onCreateView(@Nullable View parent, @NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
 
         //主导航
-        //final NavController mainNavController = Navigation.findNavController(parent);
+      // mainNavController = Navigation.findNavController(parent);
 
 
         return super.onCreateView(parent, name, context, attrs);

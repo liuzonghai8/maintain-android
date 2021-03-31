@@ -24,6 +24,7 @@ import com.example.maintain.ui.login.LoginViewModel;
 public class StartFragment extends BasicFragment {
 
     private LoginViewModel mViewModel;
+    private NavController navController;
 
     public static StartFragment newInstance() {
         return new StartFragment();
@@ -38,7 +39,7 @@ public class StartFragment extends BasicFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final NavController navController = Navigation.findNavController(view);
+        navController = Navigation.findNavController(view);
         mViewModel= new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
         mViewModel.authenticationState.observe(getViewLifecycleOwner(),
                 new Observer<LoginViewModel.AuthenticationState>() {

@@ -20,7 +20,7 @@ import com.example.maintain.basic.BasicFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainFragment extends BasicFragment {
-
+//    NavController mainNavController;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class MainFragment extends BasicFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //主导航
-//        final NavController mainNavController = Navigation.findNavController(view);
+//        mainNavController = Navigation.findNavController(view);
 
         final NavController bottomNavController = Navigation.findNavController(requireActivity(),R.id.nav_bottomView);
 

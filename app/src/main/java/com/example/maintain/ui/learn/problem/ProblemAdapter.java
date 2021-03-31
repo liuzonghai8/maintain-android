@@ -50,7 +50,21 @@ public class ProblemAdapter extends RecyclerView.Adapter<ProblemAdapter.ProblemI
         holder.textViewId.setText(String.valueOf(position));
         holder.textViewProblem.setText("问题: "+problem.getProblemName());
         holder.textViewAdvise.setText("建议："+problem.getAdvise());
-        holder.textViewType.setText("类型: "+problem.getProblemType());
+        switch (problem.getProblemType()){
+            case 0:
+                holder.textViewType.setText("类型: 应用");
+                break;
+            case 1:
+                holder.textViewType.setText("类型: 硬件");
+                break;
+            case 2:
+                holder.textViewType.setText("类型: 系统");
+                break;
+            default :
+                holder.textViewType.setText("类型: 业务");
+                break;
+        }
+
     }
 
     /**
